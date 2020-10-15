@@ -6,7 +6,7 @@ from .models import Settings
 
 class AnswerForm(forms.ModelForm):
     S = Settings.objects.get(game_id=123456)
-    P = Player.objects.get(game_id=123456)
+    P = Player.objects.get(player_name="Dominik")
     player_name = forms.CharField()
     game_id     = forms.IntegerField()
     answer_1    = forms.CharField(label=S.category_1,

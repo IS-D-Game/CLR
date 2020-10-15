@@ -10,6 +10,8 @@ app_name = 'game'
 urlpatterns = [
     path('', start_page_view, name='start-page'),
     path('settings/', game_create_view, name='game-create'),
-    path('game/', game_view, name='game'),
+    path('game/<str:player_name>/<int:game_id>/', game_view, name='game'),
     path('player/', player_create_view, name='player-create'),
 ]
+
+
