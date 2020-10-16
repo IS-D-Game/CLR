@@ -1,12 +1,21 @@
 
+{% if error %}
+    <div>{{error.message}}</div>
+{% endif %}
 
-<form action='.' method='POST'>{% csrf_token %}
+<form action="{% url 'game:player-create' %}" method='POST'>{% csrf_token %}
     {{ form.as_p }}
-    <input type='submit' value='Save' />
+    <input type='submit' value='Save'/>
+
 </form>
 
 
-
+<!--
+<input id="id_start_date" type="something">
+var a = document.getElementsById("id_start_date").val;
+var a = $("#id_start_date").val();
+-->
+<!--
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
 
@@ -28,5 +37,5 @@ $(document).ready(function(){
        <button type="button" id="button">Click Me!</button>
 </body>
 </html>
-
+-->
 

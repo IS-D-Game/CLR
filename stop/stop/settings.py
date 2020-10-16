@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 #venv\Scripts\activate command to start venv in windows
-#source/bin/activate command to start venv in os
+#source bin/activate command to start venv in os
 
 from pathlib import Path
 
