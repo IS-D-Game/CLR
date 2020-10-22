@@ -1,5 +1,49 @@
 
 <form action='.' method='POST'>{% csrf_token %}
     {{ form.as_p }}
-    <input type='submit' value='Save' />
+    <input type="submit" value=Submit">
 </form>
+
+<!--
+<form>
+  <input type="text" value="{{player_name}}" deactivate>
+</form>
+
+<form action='.' method='POST'>{% csrf_token %}
+
+    {% for field in form.player_name %}
+        {{ field.player_name }}
+        <input type="text" value="{{player_name}}" deactivate>
+    {% endfor %}
+
+    <input type='submit' value='Save' />
+
+</form>
+-->
+
+<!--
+<form action='.' method='POST'>{% csrf_token %}
+    <div class="fieldWrapper">
+    {% for field in form.player_name %}
+        {{ field.player_name }}
+        <input type="text" value="{{player_name}}" deactivate>
+    {% endfor %}
+        {% for field in form.game_id %}
+        {{ field.game_id }}
+        <input type="text" value="{{game_id}}" deactivate>
+        {% endfor %}
+
+        <label> Answer 1 </label><br>
+        {{ form.answer_1 }}
+        <label> Answer 2 </label><br>
+        {{ form.answer_2 }}
+        <label> Answer 3 </label><br>
+        {{ form.answer_3 }}
+        <label> Answer 4 </label><br>
+        {{ form.answer_4 }}
+        <label> Answer 5 </label><br>
+        {{ form.answer_5 }}
+    </div>
+    <button type="submit">End Game</button>
+</form>
+-->

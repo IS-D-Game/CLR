@@ -10,15 +10,22 @@ from .models import Settings
 
 # Create your views here.
 def game_view(request, game_id, player_name):
-    obj = Settings.objects.get(game_id=game_id)
-    obj2 = Player.objects.get(player_name=player_name)
-    form = AnswerForm(request.POST or None, instance=obj)
-    if form.is_valid():
-        form.save()
-    context = {
-        "form" : form,
-    }
-    return render(request, "game/game.html", context)
+    if request.method == "GET":
+        # obj = Settings.objects.get(game_id=game_id)
+        obj2 = Player.objects.get(player_name=player_name)
+        # obj3 = Player.objects.get(game_id=game_id)
+        form = AnswerForm(request.POST or None, instance=obj2)
+        context = {
+            "form" : form,
+         }
+        return render(request, "game/game.html", context)
+    elif request.method == "POST":
+        form = AnswerForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+        return redirect("/") #zu auswertung
+
+
 
 
 def player_create_view(request):
@@ -33,7 +40,7 @@ def player_create_view(request):
         form.save()
         # if form.is_valid():
         context = {
-            'form': form
+            'form': form,
         }
 
         return redirect('/game/'+form.data['player_name']+'/'+form.data['game_id'], context)
