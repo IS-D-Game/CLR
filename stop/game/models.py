@@ -28,3 +28,8 @@ class Settings(models.Model):
     category_4          = models.CharField(max_length=50)
     category_5          = models.CharField(max_length=50)
 
+class Evaluation(models.Model):
+    game_id  = models.BigIntegerField(max_length=6)
+    e1_1 = models.CharField(max_length=50)
+    e1_2 = models.BooleanField()
+    e1_3 = models.BooleanField()

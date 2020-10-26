@@ -3,6 +3,7 @@ from django.http import HttpResponse
 import json
 from .forms import AnswerForm
 from .forms import PlayerForm
+from .forms import EvaluationForm
 from .models import Player
 from .models import Answer
 from .models import Settings
@@ -23,7 +24,7 @@ def game_view(request, game_id, player_name):
         form = AnswerForm(request.POST or None)
         if form.is_valid():
             form.save()
-        return redirect("/") #zu auswertung
+        return redirect('/evaluation') #zu auswertung
 
 
 
@@ -61,3 +62,21 @@ def game_create_view(request):
     return render(request, "game/game_create.html")
 
 
+def evaluation_view(request):
+    if request.method == "GET":
+        queryset_category = (Settings.objects.filter(game_id=123456).values('category_1', 'category_2', 'category_3', 'category_4',
+                                                                 'category_5'))
+        queryset = (Answer.objects.filter(game_id=123456).values('player_name', 'answer_1', 'answer_2', 'answer_3',
+                                                           'answer_4', 'answer_5'))
+        form = EvaluationForm(request.POST or None)
+        context = {
+            "form" : form,
+            "answer_list" : queryset,
+            "category_list" : queryset_category
+         }
+        return render(request, "game/evaluation.html", context)
+    elif request.method == "POST":
+        form = EvaluationForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+        return redirect("/") #zum Leaderboard

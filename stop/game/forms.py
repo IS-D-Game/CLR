@@ -3,10 +3,11 @@ from django import forms
 from .models import Answer
 from .models import Player
 from .models import Settings
+from .models import Evaluation
 
 class AnswerForm(forms.ModelForm):
     S = Settings.objects.get(game_id=123456)
-    P = Player.objects.get(game_id=123456)
+    P = Player.objects.get(player_name="Dominik")
     player_name = forms.CharField()
     game_id     = forms.IntegerField()
     answer_1    = forms.CharField(label=S.category_1,
@@ -42,4 +43,20 @@ class PlayerForm(forms.ModelForm):
         fields = [
             'player_name',
             'game_id',
+        ]
+
+
+
+class EvaluationForm(forms.ModelForm):
+    game_id     = forms.IntegerField()
+    e1_1 = forms.CharField(max_length=50)
+    # e1_2 = forms.CharField(max_length=50)
+    # e1_3 = forms.CharField(max_length=50)
+    class Meta:
+        model = Answer
+        fields = [
+            'game_id',
+            'e1_1',
+            # 'e1_2',
+            # 'e1_3'
         ]

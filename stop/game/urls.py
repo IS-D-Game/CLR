@@ -4,6 +4,7 @@ from .views import (
     player_create_view,
     start_page_view,
     game_create_view,
+    evaluation_view
 )
 
 app_name = 'game'
@@ -12,6 +13,7 @@ urlpatterns = [
     path('settings/', game_create_view, name='game-create'),
     path('game/<str:player_name>/<int:game_id>/', game_view, name='game'),
     path('player/', player_create_view, name='player-create'),
+    path('evaluation/', evaluation_view, name='evaluation-create'),
 ]
 
 
