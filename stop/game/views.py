@@ -7,6 +7,7 @@ from .forms import EvaluationForm
 from .models import Player
 from .models import Answer
 from .models import Settings
+from .models import Evaluation
 
 
 # Create your views here.
@@ -62,6 +63,7 @@ def game_create_view(request):
     return render(request, "game/game_create.html")
 
 
+
 def evaluation_view(request):
     if request.method == "GET":
         queryset_category = (Settings.objects.filter(game_id=123456).values('category_1', 'category_2', 'category_3', 'category_4',
@@ -79,4 +81,16 @@ def evaluation_view(request):
         form = EvaluationForm(request.POST or None)
         if form.is_valid():
             form.save()
-        return redirect("/") #zum Leaderboard
+        return redirect('/leaderboard') #zum Leaderboard
+
+
+def leaderboard_view(request):
+    if request.method == "GET":
+        queryset_evaluation = (Evaluation.objects.filter(game_id=123456).values('evaluation_player_1',
+                                                                                'evaluation_player_2',
+                                                                                'evaluation_player_3'))
+
+        context = {
+            "evaluation_list" : queryset_evaluation
+         }
+    return render(request, "game/leaderboard.html",context)
