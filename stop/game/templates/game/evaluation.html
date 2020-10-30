@@ -105,8 +105,93 @@
 <!--    <input type='submit' value='Save' />-->
 <!--</form>-->
 
+
+<!--Auto Form-->
 <form action="." method='POST'>{% csrf_token %}
     {{ form.as_p }}
     <input type='submit' value='Save'/>
 
 </form>
+
+<!--{% for ans in answer_list %}-->
+<!--{% if forloop.counter == 1 %}-->
+<!--<h1> 1 </h1>-->
+<!--{% endif %}-->
+<!--{% if forloop.counter == 2 %}-->
+<!--<h1> 2 </h1>-->
+<!--{% endif %}-->
+<!--{% if forloop.counter == 3 %}-->
+<!--<h1> 3 </h1>-->
+<!--{% endif %}-->
+<!--{% if forloop.counter == 4 %}-->
+<!--<h1> 4 </h1>-->
+<!--{% endif %}-->
+<!--{% if forloop.counter == 5 %}-->
+<!--<h1> 5 </h1>-->
+<!--{% endif %}-->
+<!--{% endfor %}-->
+
+<!--<form action='.' method='POST'>{% csrf_token %}-->
+<!--    {% for field in form.game_id %}-->
+<!--    {% endfor %}-->
+<!--    <input type="text">-->
+
+<!--    {% for ans in answer_list %}-->
+<!--        {% if forloop.counter == 1 %}-->
+<!--            {% for field in form.evaluation_player_1 %}-->
+<!--                <label>-->
+<!--                    <select name="top5" size="5">-->
+<!--                        <option>1</option>-->
+<!--                        <option>2</option>-->
+<!--                        <option>3</option>-->
+<!--                        <option>4</option>-->
+<!--                        <option>5</option>-->
+<!--                    </select>-->
+<!--                </label>-->
+<!--            {% endfor %}-->
+<!--        {% endif %}-->
+<!--    {% endfor %}-->
+
+
+<!--    {% for ans in answer_list %}-->
+<!--        {% if forloop.counter == 2 %}-->
+<!--            {% for field in form.evaluation_player_2 %}-->
+<!--                {% for ans in answer_list %}-->
+<!--                <label>-->
+<!--                {% if forloop.counter == 2 %}-->
+<!--                    {{ ans.player_name}}:-->
+<!--                {% endif %}-->
+<!--                    <select name="top5" size="5">-->
+<!--                        <option>1</option>-->
+<!--                        <option>2</option>-->
+<!--                        <option>3</option>-->
+<!--                        <option>4</option>-->
+<!--                        <option>5</option>-->
+<!--                    </select>-->
+<!--                </label>-->
+<!--                {% endfor %}-->
+<!--            {% endfor %}-->
+<!--        {% endif %}-->
+<!--    {% endfor %}-->
+
+
+<!--    {% for field in form.e1_3 %}-->
+<!--        {% for ans in answer_list %}-->
+<!--        <label>-->
+<!--            {% if forloop.counter == 3 %}-->
+<!--            {{ ans.player_name | slice:"8" }}:-->
+<!--            {% endif %}-->
+<!--            <select name="top5" size="5">-->
+<!--                <option>1</option>-->
+<!--                <option>2</option>-->
+<!--                <option>3</option>-->
+<!--                <option>4</option>-->
+<!--                <option>5</option>-->
+<!--            </select>-->
+<!--        </label>-->
+<!--        {% endfor %}-->
+<!--    {% endfor %}-->
+
+
+<!--    <input type='submit' value='Save' />-->
+<!--</form>-->
