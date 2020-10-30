@@ -30,7 +30,7 @@ def game_view(request, game_id, player_name):
         context = {
             'form': form,
         }
-        return redirect('/evaluation', context) #zu auswertung
+        return redirect('/evaluation/'+form.data['player_name']+'/'+form.data['game_id'], context) #zu auswertung
 
 
 
@@ -69,15 +69,15 @@ def game_create_view(request):
 
 
 
-def evaluation_view(request): #, game_id
+def evaluation_view(request, game_id, player_name):
     if request.method == "GET":
-        # obj = Answer.objects.get(game_id=game_id)
-        queryset_category = (Settings.objects.filter(game_id=123456).values('category_1', 'category_2', 'category_3', 'category_4',
+        obj = Answer.objects.get(player_name=player_name)
+        queryset_category = (Settings.objects.filter(game_id=obj.game_id).values('category_1', 'category_2', 'category_3', 'category_4',
                                                                  'category_5'))
-        queryset = (Answer.objects.filter(game_id=123456).values('player_name', 'answer_1', 'answer_2', 'answer_3',
-                                                           'answer_4', 'answer_5'))
+        queryset = (Answer.objects.filter(game_id=obj.game_id).values('player_name', 'answer_1', 'answer_2', 'answer_3',
+                                                          'answer_4', 'answer_5'))
 
-        form = EvaluationForm(request.POST or None) #instance=obj
+        form = EvaluationForm(request.POST or None, instance=obj)
         context = {
             "form" : form,
             "answer_list" : queryset,

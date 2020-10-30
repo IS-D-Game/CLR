@@ -14,6 +14,6 @@ urlpatterns = [
     path('settings/', game_create_view, name='game-create'),
     path('game/<str:player_name>/<int:game_id>/', game_view, name='game'),
     path('player/', player_create_view, name='player-create'),
-    path('evaluation/', evaluation_view, name='evaluation-create'),
+    path('evaluation/<str:player_name>/<int:game_id>/', evaluation_view, name='evaluation-create'),
     path('leaderboard/', leaderboard_view, name='leaderboard-page')
 ]
