@@ -33,3 +33,4 @@ class Evaluation(models.Model):
     evaluation_player_1 = models.CharField(max_length=50)
     evaluation_player_2 = models.CharField(max_length=50)
     evaluation_player_3 = models.CharField(max_length=50)
+    player_name = models.CharField(max_length=20)

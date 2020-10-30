@@ -43,6 +43,7 @@ class PlayerForm(forms.ModelForm):
 
 class EvaluationForm(forms.ModelForm):
     game_id     = forms.IntegerField()
+    player_name = forms.CharField()
     CHOICES = (('1', '1 Right'), ('2', '2 Right'),('3', '3 Right'),('4', '4 Right'),('5', '5 Right'),)
     evaluation_player_1 = forms.ChoiceField(choices=CHOICES)
     evaluation_player_2 = forms.ChoiceField(choices=CHOICES)
@@ -51,6 +52,7 @@ class EvaluationForm(forms.ModelForm):
         model = Evaluation
         fields = [
             'game_id',
+            'player_name',
             'evaluation_player_1',
             'evaluation_player_2',
             'evaluation_player_3'

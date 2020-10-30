@@ -69,7 +69,7 @@ def game_create_view(request):
 
 
 
-def evaluation_view(request, game_id, player_name): #test
+def evaluation_view(request, game_id, player_name):
     if request.method == "GET":
         obj = Answer.objects.get(player_name=player_name)
         queryset_category = (Settings.objects.filter(game_id=obj.game_id).values('category_1', 'category_2', 'category_3', 'category_4',
@@ -88,12 +88,16 @@ def evaluation_view(request, game_id, player_name): #test
         form = EvaluationForm(request.POST or None)
         if form.is_valid():
             form.save()
-        return redirect('/leaderboard') #zum Leaderboard
+        context = {
+            'form': form,
+        }
+        return redirect('/leaderboard/' + form.data['player_name'] + '/' + form.data['game_id'], context)
 
 
-def leaderboard_view(request):
+def leaderboard_view(request, player_name, game_id):
     if request.method == "GET":
-        queryset_evaluation = (Evaluation.objects.filter(game_id=123456).values('evaluation_player_1',
+        obj = Answer.objects.get(player_name=player_name)
+        queryset_evaluation = (Evaluation.objects.filter(game_id=obj.game_id).values('evaluation_player_1',
                                                                                 'evaluation_player_2',
                                                                                 'evaluation_player_3'))
 
