@@ -10,16 +10,11 @@ class AnswerForm(forms.ModelForm):
     # P = Player.objects.get(player_name="Dominik")
     player_name = forms.CharField()
     game_id     = forms.IntegerField()
-    answer_1    = forms.CharField(label="S.category_1",
-                    widget=forms.TextInput(attrs={"placeholder": "S.game_letter"}))
-    answer_2    = forms.CharField(label="S.category_2",
-                    widget=forms.TextInput(attrs={"placeholder": "S.game_letter"}))
-    answer_3    = forms.CharField(label="S.category_3",
-                    widget=forms.TextInput(attrs={"placeholder": "S.game_letter"}))
-    answer_4    = forms.CharField(label="S.category_4",
-                    widget=forms.TextInput(attrs={"placeholder": "S.game_letter"}))
-    answer_5    = forms.CharField(label="S.category_5",
-                    widget=forms.TextInput(attrs={"placeholder": "S.game_letter"}))
+    answer_1    = forms.CharField()
+    answer_2    = forms.CharField()
+    answer_3    = forms.CharField()
+    answer_4    = forms.CharField()
+    answer_5    = forms.CharField()
     class Meta:
         model = Answer
         fields = [
