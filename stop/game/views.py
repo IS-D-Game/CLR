@@ -13,10 +13,11 @@ from .models import Evaluation
 # Create your views here.
 def game_view(request, game_id, player_name):
     if request.method == "GET":
-        queryset_category = (Settings.objects.filter(game_id=123456).values('category_1', 'category_2', 'category_3', 'category_4',
+        obj = Player.objects.get(player_name=player_name)
+        queryset_category = (Settings.objects.filter(game_id=obj.game_id).values('category_1', 'category_2', 'category_3', 'category_4',
                                                                  'category_5'))
 
-        obj = Player.objects.get(player_name=player_name)
+
         form = AnswerForm(request.POST or None, instance = obj)
         context = {
             "form" : form,
