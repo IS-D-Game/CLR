@@ -69,7 +69,7 @@ def game_create_view(request):
 
 
 
-def evaluation_view(request, game_id, player_name):
+def evaluation_view(request, game_id, player_name): #test
     if request.method == "GET":
         obj = Answer.objects.get(player_name=player_name)
         queryset_category = (Settings.objects.filter(game_id=obj.game_id).values('category_1', 'category_2', 'category_3', 'category_4',
