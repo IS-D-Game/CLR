@@ -1,9 +1,41 @@
 from django import forms
-
+import random
+import string
 from .models import Answer
 from .models import Player
 from .models import Settings
 from .models import Evaluation
+
+class SettingsForm(forms.ModelForm):
+    # game_id     = forms.IntegerField()
+    CHOICES_Players = (('3','3'),('4','4'),('5','5'))
+    number_of_players = forms.ChoiceField(choices=CHOICES_Players, label='Number of Players')
+    list_letters = string.ascii_uppercase
+    game_letter = forms.CharField(initial=random.choice(list_letters), label='Letter')
+    CHOICES_People = (('Musician', 'Musician'), ('Band', 'Band'),('Hollywood-Star', 'Hollywood-Star'),('Athlete', 'Athlete'),('Politician', 'Politician'),)
+    CHOICES_Geography = (('City', 'City'), ('Country', 'Country'), ('River', 'River'), ('Lake', 'Lake'),('Mountain', 'Mountain'),)
+    CHOICES_Food = (('Meal', 'Meal'), ('Liquor', 'Liquor'), ('Candy', 'Candy'), ('Fruit', 'Fruit'), ('Vegetables', 'Vegetables'),)
+    CHOICES_Nature = (('Animal', 'Animal'), ('Dog-Breed', 'Dog-Breed'), ('Fish', 'Fish'), ('Bird', 'Bird'), ('Plant', 'Plant'),)
+    CHOICES_Others = (('Movie', 'Movie'), ('Series', 'Series'), ('Cosmetic-Brand', 'Cosmetic-Brand'), ('Car-Brand', 'Car-Brand'), ('Clothing-Brand', 'Clothing-Brand'),)
+    category_1          = forms.ChoiceField(choices=CHOICES_People, label="People")
+    category_2          = forms.ChoiceField(choices=CHOICES_Geography, label="Geography")
+    category_3          = forms.ChoiceField(choices=CHOICES_Food, label="Food")
+    category_4          = forms.ChoiceField(choices=CHOICES_Nature, label="Nature")
+    category_5          = forms.ChoiceField(choices=CHOICES_Others, label="Others")
+    game_id = forms.CharField(initial=random.randint(100000, 999999), label='Game ID')
+    class Meta:
+        model = Settings
+        fields = [
+            'number_of_players',
+            'game_letter',
+            'category_1',
+            'category_2',
+            'category_3',
+            'category_4',
+            'category_5',
+            'game_id',
+        ]
+
 
 class AnswerForm(forms.ModelForm):
     # S = Settings.objects.get(game_id=123456)
@@ -44,20 +76,9 @@ class PlayerForm(forms.ModelForm):
 class EvaluationForm(forms.ModelForm):
     game_id     = forms.IntegerField()
     player_name = forms.CharField()
-    S = Settings.objects.get(game_id=222)
+    S = Settings.objects.get(game_id=145100)
     CHOICES = (('1', '1 Right'), ('2', '2 Right'),('3', '3 Right'),('4', '4 Right'),('5', '5 Right'),)
-    if S.number_of_players == 2:
-        evaluation_player_1 = forms.ChoiceField(choices=CHOICES)
-        evaluation_player_2 = forms.ChoiceField(choices=CHOICES)
-        class Meta:
-            model = Evaluation
-            fields = [
-                'game_id',
-                'player_name',
-                'evaluation_player_1',
-                'evaluation_player_2'
-            ]
-    elif S.number_of_players == 3:
+    if S.number_of_players == 3:
         evaluation_player_1 = forms.ChoiceField(choices=CHOICES)
         evaluation_player_2 = forms.ChoiceField(choices=CHOICES)
         evaluation_player_3 = forms.ChoiceField(choices=CHOICES)
@@ -70,7 +91,37 @@ class EvaluationForm(forms.ModelForm):
                 'evaluation_player_2',
                 'evaluation_player_3'
             ]
+    elif S.number_of_players == 4:
+        evaluation_player_1 = forms.ChoiceField(choices=CHOICES)
+        evaluation_player_2 = forms.ChoiceField(choices=CHOICES)
+        evaluation_player_3 = forms.ChoiceField(choices=CHOICES)
+        evaluation_player_4 = forms.ChoiceField(choices=CHOICES)
+        class Meta:
+            model = Evaluation
+            fields = [
+                'game_id',
+                'player_name',
+                'evaluation_player_1',
+                'evaluation_player_2',
+                'evaluation_player_3',
+                'evaluation_player_4'
+            ]
 
-    # evaluation_player_1 = forms.ChoiceField(choices=CHOICES)
-    # evaluation_player_2 = forms.ChoiceField(choices=CHOICES)
-    # evaluation_player_3 = forms.ChoiceField(choices=CHOICES)
+    elif S.number_of_players == 5:
+        evaluation_player_1 = forms.ChoiceField(choices=CHOICES)
+        evaluation_player_2 = forms.ChoiceField(choices=CHOICES)
+        evaluation_player_3 = forms.ChoiceField(choices=CHOICES)
+        evaluation_player_4 = forms.ChoiceField(choices=CHOICES)
+        evaluation_player_5 = forms.ChoiceField(choices=CHOICES)
+        class Meta:
+            model = Evaluation
+            fields = [
+                'game_id',
+                'player_name',
+                'evaluation_player_1',
+                'evaluation_player_2',
+                'evaluation_player_3',
+                'evaluation_player_4',
+                'evaluation_player_5'
+            ]
+
