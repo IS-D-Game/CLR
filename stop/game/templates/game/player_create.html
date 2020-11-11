@@ -1,14 +1,45 @@
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
 
 {% if error %}
-    <div>{{error.message}}</div>
+<div>{{error.message}}</div>
 {% endif %}
 
-<form action="{% url 'game:player-create' %}" method='POST'>{% csrf_token %}
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6">
+            <!-- Form -->
+            <form action="{% url 'game:player-create' %}" class="form" method='POST'>
+                {% csrf_token %}
+                <div class="container">
+                    {% bootstrap_form form %}
+                    {% buttons %}
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                    {% endbuttons %}
+                </div>
+            </form>
+            <!-- Form end -->
+        </div>
+    </div>
+</div>
+
+<!--
+<form action="{% url 'game:player-create' %}" method='POST' class="form">
+    {% csrf_token %}
     {{ form.as_p }}
+    {% bootstrap_form form %}
     <input type='submit' value='Save'/>
-
-</form>
-
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    {% endbuttons %}
+-->
 
 <!--
 <input id="id_start_date" type="something">
