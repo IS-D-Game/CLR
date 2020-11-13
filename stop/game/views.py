@@ -78,7 +78,7 @@ def start_page_view(request):
 def game_create_view(request):
     if request.method == "GET":
         form = SettingsForm()
-
+        form.fields['game_id'].widget = forms.TextInput(attrs={'readonly': 'readonly'})
         context = {
             'form': form
         }
