@@ -17,9 +17,20 @@ def game_view(request, game_id, player_name):
         obj = Player.objects.get(player_name=player_name, game_id=game_id)
         queryset_category = (Settings.objects.filter(game_id=obj.game_id).values('category_1', 'category_2', 'category_3', 'category_4',
                                                                  'category_5'))
-
+        S = Settings.objects.get(game_id=obj.game_id)
 
         form = AnswerForm(request.POST or None, instance = obj)
+        form.fields['answer_1'].label = S.category_1
+        form.fields['answer_2'].label = S.category_2
+        form.fields['answer_3'].label = S.category_3
+        form.fields['answer_4'].label = S.category_4
+        form.fields['answer_5'].label = S.category_5
+        form.fields['answer_1'].initial = S.game_letter
+        form.fields['answer_2'].initial = S.game_letter
+        form.fields['answer_3'].initial = S.game_letter
+        form.fields['answer_4'].initial = S.game_letter
+        form.fields['answer_5'].initial = S.game_letter
+
         context = {
             "form" : form,
             "settings" : queryset_category
@@ -33,8 +44,6 @@ def game_view(request, game_id, player_name):
             'form': form,
         }
         return redirect('/evaluation/'+form.data['player_name']+'/'+form.data['game_id'], context) #zu auswertung
-
-
 
 
 def player_create_view(request):
