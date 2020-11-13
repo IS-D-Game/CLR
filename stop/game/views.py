@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 import json
+import random
 from .forms import SettingsForm
 from .forms import AnswerForm
 from .forms import PlayerForm
@@ -79,6 +80,8 @@ def game_create_view(request):
     if request.method == "GET":
         form = SettingsForm()
         form.fields['game_id'].widget = forms.TextInput(attrs={'readonly': 'readonly'})
+        form.fields['game_id'].initial = random.randint(100000, 999999)
+
         context = {
             'form': form
         }

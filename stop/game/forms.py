@@ -22,7 +22,7 @@ class SettingsForm(forms.ModelForm):
     category_3          = forms.ChoiceField(choices=CHOICES_Food, label="Food")
     category_4          = forms.ChoiceField(choices=CHOICES_Nature, label="Nature")
     category_5          = forms.ChoiceField(choices=CHOICES_Others, label="Others")
-    game_id = forms.CharField(initial=random.randint(100000, 999999), label='Game ID')
+    game_id = forms.CharField()
     class Meta:
         model = Settings
         fields = [
