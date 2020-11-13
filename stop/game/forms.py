@@ -78,8 +78,8 @@ class EvaluationForm(forms.ModelForm):
     evaluation_player_1 = forms.ChoiceField(choices=CHOICES)
     evaluation_player_2 = forms.ChoiceField(choices=CHOICES)
     evaluation_player_3 = forms.ChoiceField(choices=CHOICES)
-    evaluation_player_4 = forms.ChoiceField(choices=CHOICES)
-    evaluation_player_5 = forms.ChoiceField(choices=CHOICES)
+    evaluation_player_4 = forms.ChoiceField(choices=CHOICES, initial='1 Right')
+    evaluation_player_5 = forms.ChoiceField(choices=CHOICES, initial='1 Right')
     class Meta:
         model = Evaluation
         fields = [

@@ -9,6 +9,7 @@ from .models import Player
 from .models import Answer
 from .models import Settings
 from .models import Evaluation
+from django import forms
 
 
 # Create your views here.
@@ -100,13 +101,35 @@ def evaluation_view(request, game_id, player_name):
                                                                  'category_5'))
         queryset = (Answer.objects.filter(game_id=obj.game_id).values('player_name', 'answer_1', 'answer_2', 'answer_3',
                                                           'answer_4', 'answer_5'))
-
         form = EvaluationForm(request.POST or None, instance=obj)
-        context = {
-            "form" : form,
-            "answer_list" : queryset,
-            "category_list" : queryset_category
-         }
+
+        S = Settings.objects.get(game_id=obj.game_id)
+        if S.number_of_players == 3:
+            form.fields['evaluation_player_4'].widget = forms.HiddenInput()
+            form.fields['evaluation_player_5'].widget = forms.HiddenInput()
+
+            context = {
+                "form": form,
+                "answer_list": queryset,
+                "category_list": queryset_category
+            }
+
+        elif S.number_of_players == 4:
+            form.fields['evaluation_player_5'].widget = forms.HiddenInput()
+
+            context = {
+                "form": form,
+                "answer_list": queryset,
+                "category_list": queryset_category
+            }
+
+        elif S.number_of_players == 5:
+
+            context = {
+                "form" : form,
+                "answer_list" : queryset,
+                "category_list" : queryset_category
+             }
         return render(request, "game/evaluation.html", context)
     elif request.method == "POST":
         form = EvaluationForm(request.POST or None)
