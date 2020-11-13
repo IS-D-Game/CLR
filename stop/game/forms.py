@@ -10,8 +10,8 @@ class SettingsForm(forms.ModelForm):
     # game_id     = forms.IntegerField()
     CHOICES_Players = (('3','3'),('4','4'),('5','5'))
     number_of_players = forms.ChoiceField(choices=CHOICES_Players, label='Number of Players')
-    list_letters = string.ascii_uppercase
-    game_letter = forms.CharField(initial=random.choice(list_letters), label='Letter')
+    # list_letters = string.ascii_uppercase
+    game_letter = forms.CharField(label='Letter')
     CHOICES_People = (('Musician', 'Musician'), ('Band', 'Band'),('Hollywood-Star', 'Hollywood-Star'),('Athlete', 'Athlete'),('Politician', 'Politician'),)
     CHOICES_Geography = (('City', 'City'), ('Country', 'Country'), ('River', 'River'), ('Lake', 'Lake'),('Mountain', 'Mountain'),)
     CHOICES_Food = (('Meal', 'Meal'), ('Liquor', 'Liquor'), ('Candy', 'Candy'), ('Fruit', 'Fruit'), ('Vegetables', 'Vegetables'),)
@@ -22,7 +22,7 @@ class SettingsForm(forms.ModelForm):
     category_3          = forms.ChoiceField(choices=CHOICES_Food, label="Food")
     category_4          = forms.ChoiceField(choices=CHOICES_Nature, label="Nature")
     category_5          = forms.ChoiceField(choices=CHOICES_Others, label="Others")
-    game_id = forms.CharField()
+    game_id = forms.CharField(label = "Game ID")
     class Meta:
         model = Settings
         fields = [

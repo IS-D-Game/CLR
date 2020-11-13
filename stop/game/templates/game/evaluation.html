@@ -1,197 +1,239 @@
+{# Load the tag library #}
+{% load bootstrap4 %}
 
-<h1> Answer Evaluation</h1>
-<!--<form action='.' method='POST'>{% csrf_token %}-->
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
 
-<!--    {% for field in form.game_id %}-->
-<!--    {% endfor %}-->
-<!--    <input type="text">-->
-<!--    <input type='submit' value='Save' />-->
-<!--</form>-->
-
-{% for cat in category_list %}
-{% for ans in answer_list %}
-    <h2>{{ ans.player_name }}</h2><br/>
-    {{ cat.category_1 }} =
-    {{ ans.answer_1 }}<br/>
-    {{ cat.category_2 }} =
-    {{ ans.answer_2 }}<br/>
-    {{ cat.category_3 }} =
-    {{ ans.answer_3 }}<br/>
-    {{ cat.category_4 }} =
-    {{ ans.answer_4 }}<br/>
-    {{ cat.category_5 }} =
-    {{ ans.answer_5 }}
-<!--    <form action='.' method='POST'>{% csrf_token %}-->
-
-<!--    {% for field in form.e1_1 %}-->
-<!--        <input type="text">-->
-<!--        <label>Points:-->
-<!--            <select name="top5" size="5">-->
-<!--                <option>1</option>-->
-<!--                <option>2</option>-->
-<!--                <option>3</option>-->
-<!--                <option>4</option>-->
-<!--                <option>5</option>-->
-<!--            </select>-->
-<!--        </label>-->
-<!--    {% endfor %}-->
-
-<!--    <input type='submit' value='Save' />-->
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
 
 
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6">
+            <!-- Form -->
+            <h1> Answer Evaluation</h1>
+                {% for cat in category_list %}
+                    {% for ans in answer_list %}
+                        <h2>{{ ans.player_name }}</h2><br/>
+                        {{ cat.category_1 }} =
+                        {{ ans.answer_1 }}<br/>
+                        {{ cat.category_2 }} =
+                        {{ ans.answer_2 }}<br/>
+                        {{ cat.category_3 }} =
+                        {{ ans.answer_3 }}<br/>
+                        {{ cat.category_4 }} =
+                        {{ ans.answer_4 }}<br/>
+                        {{ cat.category_5 }} =
+                        {{ ans.answer_5 }}
+                    {% endfor %}
+                {% endfor %}
+            <form action="." method='POST'>{% csrf_token %}
+                {{ form.as_p }}
+                <input type='submit' value='Save'/>
 
-<!--</form>-->
-
-{% endfor %}
-{% endfor %}
-
-
-<!--<form action='.' method='POST'>{% csrf_token %}-->
-<!--    {% for field in form.game_id %}-->
-<!--    {% endfor %}-->
-<!--    <input type="text">-->
-
-<!--    {% for field in form.e1_1 %}-->
-<!--        {% for ans in answer_list %}-->
-<!--        <label>-->
-<!--            {% if forloop.counter == 1 %}-->
-<!--            {{ ans.player_name | slice:"8" }}:-->
-<!--            {% endif %}-->
-<!--            <select name="top5" size="5">-->
-<!--                <option>1</option>-->
-<!--                <option>2</option>-->
-<!--                <option>3</option>-->
-<!--                <option>4</option>-->
-<!--                <option>5</option>-->
-<!--            </select>-->
-<!--        </label>-->
-<!--        {% endfor %}-->
-<!--    {% endfor %}-->
-
-<!--    {% for field in form.e1_2 %}-->
-<!--        {% for ans in answer_list %}-->
-<!--        <label>-->
-<!--&lt;!&ndash;            {% if forloop.counter == 2 %}&ndash;&gt;-->
-<!--            {{ ans.player_name | slice:"8" }}:-->
-<!--&lt;!&ndash;            {% endif %}&ndash;&gt;-->
-<!--            <select name="top5" size="5">-->
-<!--                <option>1</option>-->
-<!--                <option>2</option>-->
-<!--                <option>3</option>-->
-<!--                <option>4</option>-->
-<!--                <option>5</option>-->
-<!--            </select>-->
-<!--        </label>-->
-<!--        {% endfor %}-->
-<!--    {% endfor %}-->
-
-<!--    {% for field in form.e1_3 %}-->
-<!--        {% for ans in answer_list %}-->
-<!--        <label>-->
-<!--            {% if forloop.counter == 3 %}-->
-<!--            {{ ans.player_name | slice:"8" }}:-->
-<!--            {% endif %}-->
-<!--            <select name="top5" size="5">-->
-<!--                <option>1</option>-->
-<!--                <option>2</option>-->
-<!--                <option>3</option>-->
-<!--                <option>4</option>-->
-<!--                <option>5</option>-->
-<!--            </select>-->
-<!--        </label>-->
-<!--        {% endfor %}-->
-<!--    {% endfor %}-->
-
-<!--    <input type='submit' value='Save' />-->
-<!--</form>-->
+            </form>
+            <!-- Form end -->
+        </div>
+    </div>
+</div>
 
 
-<!--Auto Form-->
-<form action="." method='POST'>{% csrf_token %}
-    {{ form.as_p }}
-    <input type='submit' value='Save'/>
 
-</form>
+<!--<h1> Answer Evaluation</h1>-->
+<!--&lt;!&ndash;<form action='.' method='POST'>{% csrf_token %}&ndash;&gt;-->
 
+<!--&lt;!&ndash;    {% for field in form.game_id %}&ndash;&gt;-->
+<!--&lt;!&ndash;    {% endfor %}&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="text">&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type='submit' value='Save' />&ndash;&gt;-->
+<!--&lt;!&ndash;</form>&ndash;&gt;-->
+
+<!--{% for cat in category_list %}-->
 <!--{% for ans in answer_list %}-->
-<!--{% if forloop.counter == 1 %}-->
-<!--<h1> 1 </h1>-->
-<!--{% endif %}-->
-<!--{% if forloop.counter == 2 %}-->
-<!--<h1> 2 </h1>-->
-<!--{% endif %}-->
-<!--{% if forloop.counter == 3 %}-->
-<!--<h1> 3 </h1>-->
-<!--{% endif %}-->
-<!--{% if forloop.counter == 4 %}-->
-<!--<h1> 4 </h1>-->
-<!--{% endif %}-->
-<!--{% if forloop.counter == 5 %}-->
-<!--<h1> 5 </h1>-->
-<!--{% endif %}-->
+<!--    <h2>{{ ans.player_name }}</h2><br/>-->
+<!--    {{ cat.category_1 }} =-->
+<!--    {{ ans.answer_1 }}<br/>-->
+<!--    {{ cat.category_2 }} =-->
+<!--    {{ ans.answer_2 }}<br/>-->
+<!--    {{ cat.category_3 }} =-->
+<!--    {{ ans.answer_3 }}<br/>-->
+<!--    {{ cat.category_4 }} =-->
+<!--    {{ ans.answer_4 }}<br/>-->
+<!--    {{ cat.category_5 }} =-->
+<!--    {{ ans.answer_5 }}-->
+<!--&lt;!&ndash;    <form action='.' method='POST'>{% csrf_token %}&ndash;&gt;-->
+
+<!--&lt;!&ndash;    {% for field in form.e1_1 %}&ndash;&gt;-->
+<!--&lt;!&ndash;        <input type="text">&ndash;&gt;-->
+<!--&lt;!&ndash;        <label>Points:&ndash;&gt;-->
+<!--&lt;!&ndash;            <select name="top5" size="5">&ndash;&gt;-->
+<!--&lt;!&ndash;                <option>1</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option>2</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option>3</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option>4</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option>5</option>&ndash;&gt;-->
+<!--&lt;!&ndash;            </select>&ndash;&gt;-->
+<!--&lt;!&ndash;        </label>&ndash;&gt;-->
+<!--&lt;!&ndash;    {% endfor %}&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <input type='submit' value='Save' />&ndash;&gt;-->
+
+
+
+<!--&lt;!&ndash;</form>&ndash;&gt;-->
+
+<!--{% endfor %}-->
 <!--{% endfor %}-->
 
-<!--<form action='.' method='POST'>{% csrf_token %}-->
-<!--    {% for field in form.game_id %}-->
-<!--    {% endfor %}-->
-<!--    <input type="text">-->
 
-<!--    {% for ans in answer_list %}-->
-<!--        {% if forloop.counter == 1 %}-->
-<!--            {% for field in form.evaluation_player_1 %}-->
-<!--                <label>-->
-<!--                    <select name="top5" size="5">-->
-<!--                        <option>1</option>-->
-<!--                        <option>2</option>-->
-<!--                        <option>3</option>-->
-<!--                        <option>4</option>-->
-<!--                        <option>5</option>-->
-<!--                    </select>-->
-<!--                </label>-->
-<!--            {% endfor %}-->
-<!--        {% endif %}-->
-<!--    {% endfor %}-->
+<!--&lt;!&ndash;<form action='.' method='POST'>{% csrf_token %}&ndash;&gt;-->
+<!--&lt;!&ndash;    {% for field in form.game_id %}&ndash;&gt;-->
+<!--&lt;!&ndash;    {% endfor %}&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="text">&ndash;&gt;-->
+
+<!--&lt;!&ndash;    {% for field in form.e1_1 %}&ndash;&gt;-->
+<!--&lt;!&ndash;        {% for ans in answer_list %}&ndash;&gt;-->
+<!--&lt;!&ndash;        <label>&ndash;&gt;-->
+<!--&lt;!&ndash;            {% if forloop.counter == 1 %}&ndash;&gt;-->
+<!--&lt;!&ndash;            {{ ans.player_name | slice:"8" }}:&ndash;&gt;-->
+<!--&lt;!&ndash;            {% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;            <select name="top5" size="5">&ndash;&gt;-->
+<!--&lt;!&ndash;                <option>1</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option>2</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option>3</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option>4</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option>5</option>&ndash;&gt;-->
+<!--&lt;!&ndash;            </select>&ndash;&gt;-->
+<!--&lt;!&ndash;        </label>&ndash;&gt;-->
+<!--&lt;!&ndash;        {% endfor %}&ndash;&gt;-->
+<!--&lt;!&ndash;    {% endfor %}&ndash;&gt;-->
+
+<!--&lt;!&ndash;    {% for field in form.e1_2 %}&ndash;&gt;-->
+<!--&lt;!&ndash;        {% for ans in answer_list %}&ndash;&gt;-->
+<!--&lt;!&ndash;        <label>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            {% if forloop.counter == 2 %}&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            {{ ans.player_name | slice:"8" }}:&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            {% endif %}&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <select name="top5" size="5">&ndash;&gt;-->
+<!--&lt;!&ndash;                <option>1</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option>2</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option>3</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option>4</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option>5</option>&ndash;&gt;-->
+<!--&lt;!&ndash;            </select>&ndash;&gt;-->
+<!--&lt;!&ndash;        </label>&ndash;&gt;-->
+<!--&lt;!&ndash;        {% endfor %}&ndash;&gt;-->
+<!--&lt;!&ndash;    {% endfor %}&ndash;&gt;-->
+
+<!--&lt;!&ndash;    {% for field in form.e1_3 %}&ndash;&gt;-->
+<!--&lt;!&ndash;        {% for ans in answer_list %}&ndash;&gt;-->
+<!--&lt;!&ndash;        <label>&ndash;&gt;-->
+<!--&lt;!&ndash;            {% if forloop.counter == 3 %}&ndash;&gt;-->
+<!--&lt;!&ndash;            {{ ans.player_name | slice:"8" }}:&ndash;&gt;-->
+<!--&lt;!&ndash;            {% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;            <select name="top5" size="5">&ndash;&gt;-->
+<!--&lt;!&ndash;                <option>1</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option>2</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option>3</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option>4</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option>5</option>&ndash;&gt;-->
+<!--&lt;!&ndash;            </select>&ndash;&gt;-->
+<!--&lt;!&ndash;        </label>&ndash;&gt;-->
+<!--&lt;!&ndash;        {% endfor %}&ndash;&gt;-->
+<!--&lt;!&ndash;    {% endfor %}&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <input type='submit' value='Save' />&ndash;&gt;-->
+<!--&lt;!&ndash;</form>&ndash;&gt;-->
 
 
-<!--    {% for ans in answer_list %}-->
-<!--        {% if forloop.counter == 2 %}-->
-<!--            {% for field in form.evaluation_player_2 %}-->
-<!--                {% for ans in answer_list %}-->
-<!--                <label>-->
-<!--                {% if forloop.counter == 2 %}-->
-<!--                    {{ ans.player_name}}:-->
-<!--                {% endif %}-->
-<!--                    <select name="top5" size="5">-->
-<!--                        <option>1</option>-->
-<!--                        <option>2</option>-->
-<!--                        <option>3</option>-->
-<!--                        <option>4</option>-->
-<!--                        <option>5</option>-->
-<!--                    </select>-->
-<!--                </label>-->
-<!--                {% endfor %}-->
-<!--            {% endfor %}-->
-<!--        {% endif %}-->
-<!--    {% endfor %}-->
+<!--&lt;!&ndash;Auto Form&ndash;&gt;-->
+<!--<form action="." method='POST'>{% csrf_token %}-->
+<!--    {{ form.as_p }}-->
+<!--    <input type='submit' value='Save'/>-->
 
-
-<!--    {% for field in form.e1_3 %}-->
-<!--        {% for ans in answer_list %}-->
-<!--        <label>-->
-<!--            {% if forloop.counter == 3 %}-->
-<!--            {{ ans.player_name | slice:"8" }}:-->
-<!--            {% endif %}-->
-<!--            <select name="top5" size="5">-->
-<!--                <option>1</option>-->
-<!--                <option>2</option>-->
-<!--                <option>3</option>-->
-<!--                <option>4</option>-->
-<!--                <option>5</option>-->
-<!--            </select>-->
-<!--        </label>-->
-<!--        {% endfor %}-->
-<!--    {% endfor %}-->
-
-
-<!--    <input type='submit' value='Save' />-->
 <!--</form>-->
+
+<!--&lt;!&ndash;{% for ans in answer_list %}&ndash;&gt;-->
+<!--&lt;!&ndash;{% if forloop.counter == 1 %}&ndash;&gt;-->
+<!--&lt;!&ndash;<h1> 1 </h1>&ndash;&gt;-->
+<!--&lt;!&ndash;{% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;{% if forloop.counter == 2 %}&ndash;&gt;-->
+<!--&lt;!&ndash;<h1> 2 </h1>&ndash;&gt;-->
+<!--&lt;!&ndash;{% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;{% if forloop.counter == 3 %}&ndash;&gt;-->
+<!--&lt;!&ndash;<h1> 3 </h1>&ndash;&gt;-->
+<!--&lt;!&ndash;{% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;{% if forloop.counter == 4 %}&ndash;&gt;-->
+<!--&lt;!&ndash;<h1> 4 </h1>&ndash;&gt;-->
+<!--&lt;!&ndash;{% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;{% if forloop.counter == 5 %}&ndash;&gt;-->
+<!--&lt;!&ndash;<h1> 5 </h1>&ndash;&gt;-->
+<!--&lt;!&ndash;{% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;{% endfor %}&ndash;&gt;-->
+
+<!--&lt;!&ndash;<form action='.' method='POST'>{% csrf_token %}&ndash;&gt;-->
+<!--&lt;!&ndash;    {% for field in form.game_id %}&ndash;&gt;-->
+<!--&lt;!&ndash;    {% endfor %}&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="text">&ndash;&gt;-->
+
+<!--&lt;!&ndash;    {% for ans in answer_list %}&ndash;&gt;-->
+<!--&lt;!&ndash;        {% if forloop.counter == 1 %}&ndash;&gt;-->
+<!--&lt;!&ndash;            {% for field in form.evaluation_player_1 %}&ndash;&gt;-->
+<!--&lt;!&ndash;                <label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <select name="top5" size="5">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <option>1</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <option>2</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <option>3</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <option>4</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <option>5</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </select>&ndash;&gt;-->
+<!--&lt;!&ndash;                </label>&ndash;&gt;-->
+<!--&lt;!&ndash;            {% endfor %}&ndash;&gt;-->
+<!--&lt;!&ndash;        {% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;    {% endfor %}&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;    {% for ans in answer_list %}&ndash;&gt;-->
+<!--&lt;!&ndash;        {% if forloop.counter == 2 %}&ndash;&gt;-->
+<!--&lt;!&ndash;            {% for field in form.evaluation_player_2 %}&ndash;&gt;-->
+<!--&lt;!&ndash;                {% for ans in answer_list %}&ndash;&gt;-->
+<!--&lt;!&ndash;                <label>&ndash;&gt;-->
+<!--&lt;!&ndash;                {% if forloop.counter == 2 %}&ndash;&gt;-->
+<!--&lt;!&ndash;                    {{ ans.player_name}}:&ndash;&gt;-->
+<!--&lt;!&ndash;                {% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;                    <select name="top5" size="5">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <option>1</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <option>2</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <option>3</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <option>4</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <option>5</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </select>&ndash;&gt;-->
+<!--&lt;!&ndash;                </label>&ndash;&gt;-->
+<!--&lt;!&ndash;                {% endfor %}&ndash;&gt;-->
+<!--&lt;!&ndash;            {% endfor %}&ndash;&gt;-->
+<!--&lt;!&ndash;        {% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;    {% endfor %}&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;    {% for field in form.e1_3 %}&ndash;&gt;-->
+<!--&lt;!&ndash;        {% for ans in answer_list %}&ndash;&gt;-->
+<!--&lt;!&ndash;        <label>&ndash;&gt;-->
+<!--&lt;!&ndash;            {% if forloop.counter == 3 %}&ndash;&gt;-->
+<!--&lt;!&ndash;            {{ ans.player_name | slice:"8" }}:&ndash;&gt;-->
+<!--&lt;!&ndash;            {% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;            <select name="top5" size="5">&ndash;&gt;-->
+<!--&lt;!&ndash;                <option>1</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option>2</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option>3</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option>4</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                <option>5</option>&ndash;&gt;-->
+<!--&lt;!&ndash;            </select>&ndash;&gt;-->
+<!--&lt;!&ndash;        </label>&ndash;&gt;-->
+<!--&lt;!&ndash;        {% endfor %}&ndash;&gt;-->
+<!--&lt;!&ndash;    {% endfor %}&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;    <input type='submit' value='Save' />&ndash;&gt;-->
+<!--&lt;!&ndash;</form>&ndash;&gt;-->
