@@ -19,7 +19,6 @@ def game_view(request, game_id, player_name):
         queryset_category = (Settings.objects.filter(game_id=obj.game_id).values('category_1', 'category_2', 'category_3', 'category_4',
                                                                  'category_5'))
         S = Settings.objects.get(game_id=obj.game_id)
-
         form = AnswerForm(request.POST or None, instance = obj)
         form.fields['answer_1'].label = S.category_1
         form.fields['answer_2'].label = S.category_2
@@ -79,6 +78,7 @@ def start_page_view(request):
 def game_create_view(request):
     if request.method == "GET":
         form = SettingsForm()
+
         context = {
             'form': form
         }
@@ -107,6 +107,8 @@ def evaluation_view(request, game_id, player_name):
         if S.number_of_players == 3:
             form.fields['evaluation_player_4'].widget = forms.HiddenInput()
             form.fields['evaluation_player_5'].widget = forms.HiddenInput()
+            form.fields['evaluation_player_4'].initial = '0'
+            form.fields['evaluation_player_5'].initial = '0'
 
             context = {
                 "form": form,
@@ -116,6 +118,7 @@ def evaluation_view(request, game_id, player_name):
 
         elif S.number_of_players == 4:
             form.fields['evaluation_player_5'].widget = forms.HiddenInput()
+            form.fields['evaluation_player_5'].initial = '0'
 
             context = {
                 "form": form,
@@ -129,7 +132,7 @@ def evaluation_view(request, game_id, player_name):
                 "form" : form,
                 "answer_list" : queryset,
                 "category_list" : queryset_category
-             }
+            }
         return render(request, "game/evaluation.html", context)
     elif request.method == "POST":
         form = EvaluationForm(request.POST or None)

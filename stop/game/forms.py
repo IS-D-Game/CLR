@@ -74,12 +74,12 @@ class PlayerForm(forms.ModelForm):
 class EvaluationForm(forms.ModelForm):
     game_id     = forms.IntegerField(widget=forms.HiddenInput())
     player_name = forms.CharField(widget=forms.HiddenInput())
-    CHOICES = (('1', '1 Right'), ('2', '2 Right'),('3', '3 Right'),('4', '4 Right'),('5', '5 Right'),)
+    CHOICES = (('0', '0 Right'), ('1', '1 Right'), ('2', '2 Right'),('3', '3 Right'),('4', '4 Right'),('5', '5 Right'),)
     evaluation_player_1 = forms.ChoiceField(choices=CHOICES)
     evaluation_player_2 = forms.ChoiceField(choices=CHOICES)
     evaluation_player_3 = forms.ChoiceField(choices=CHOICES)
-    evaluation_player_4 = forms.ChoiceField(choices=CHOICES, initial='1 Right')
-    evaluation_player_5 = forms.ChoiceField(choices=CHOICES, initial='1 Right')
+    evaluation_player_4 = forms.ChoiceField(choices=CHOICES)
+    evaluation_player_5 = forms.ChoiceField(choices=CHOICES)
     class Meta:
         model = Evaluation
         fields = [
