@@ -1,38 +1,61 @@
-<h1>Leaderboard</h1>
+{% extends './base.html' %}
 
-<html>
-{% for query in queryset_player_name %}
-        {% if forloop.counter == 1 %}
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block content %}
+
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6">
+            <!-- Form -->
+            <h1>Leaderboard</h1>
+
+            {% for query in queryset_player_name %}
+            {% if forloop.counter == 1 %}
             {{ query.player_name }}
             {% endif %}
-    {% endfor %}
-{{ e1 }}
-<br/>
-{% for query in queryset_player_name %}
-        {% if forloop.counter == 2 %}
+            {% endfor %}
+            {{ e1 }}
+            <br/>
+            {% for query in queryset_player_name %}
+            {% if forloop.counter == 2 %}
             {{ query.player_name }}
             {% endif %}
-    {% endfor %}
-{{ e2 }}
-<br/>
-{% for query in queryset_player_name %}
-        {% if forloop.counter == 3 %}
+            {% endfor %}
+            {{ e2 }}
+            <br/>
+            {% for query in queryset_player_name %}
+            {% if forloop.counter == 3 %}
             {{ query.player_name }}
             {% endif %}
-    {% endfor %}
-{{ e3 }}
-<br/>
-{% for query in queryset_player_name %}
-        {% if forloop.counter == 4 %}
+            {% endfor %}
+            {{ e3 }}
+            <br/>
+            {% for query in queryset_player_name %}
+            {% if forloop.counter == 4 %}
             {{ query.player_name }}
             {% endif %}
-    {% endfor %}
-{{ e4 }}
-<br/>
-{% for query in queryset_player_name %}
-        {% if forloop.counter == 5 %}
+            {% endfor %}
+            {{ e4 }}
+            <br/>
+            {% for query in queryset_player_name %}
+            {% if forloop.counter == 5 %}
             {{ query.player_name }}
             {% endif %}
-    {% endfor %}
-{{ e5 }}
-</html>
+            {% endfor %}
+            {{ e5 }}
+            {% endblock %}
+
+            <!-- Form end -->
+        </div>
+    </div>
+</div>
+
