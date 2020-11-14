@@ -32,6 +32,9 @@
                         {{ ans.answer_5 }}
                     {% endfor %}
                 {% endfor %}
+
+            <button onClick="window.location.reload();">Refresh Player</button>
+
             <form action="." method='POST'>{% csrf_token %}
                 {{ form.as_p }}
                 <input type='submit' value='Save'/>
