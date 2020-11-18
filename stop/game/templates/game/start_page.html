@@ -1,16 +1,31 @@
 {% extends './base.html' %}
 
 {% block content %}
+
+<div class="jumbotron">
+  <h1 class="display-4">Welcome to our City, Land & River Game</h1>
+  <p class="lead">This game was created by 3 motivated but extremely overstrained information systems students.</p>
+  <hr class="my-4">
+  <p>Select below if you want to create a new game or join an already created game.</p>
+  <div aria-label="Basic example" class="btn-group" role="group">
+        <a class="btn btn-primary" href="/settings/" role="button">CREATE A NEW GAME</a>
+        <a class="btn btn-primary" href="/player/" role="button">ENTER A GAME LOBBY</a>
+  </div>
+</div>
+
+{% endblock %}
+
+
+<!--
 <div class="container h-100">
     <div class="row h-100 justify-content-center align-items-center">
         <div class="col-10 col-md-8 col-lg-6">
-            <!-- Form -->
-            <h1>Hello to STOP</h1>
 
-            <a class="btn btn-primary" href="/settings/" role="button">Create Game</a>
-            <a class="btn btn-primary" href="/player/" role="button">Enter Game</a>
-            <!-- Form end -->
+            <a class="btn btn-light" href="/settings/" role="button">CREATE A NEW GAME</a>
+            <a class="btn btn-light" href="/player/" role="button">ENTER A GAME LOBBY</a>
+
         </div>
     </div>
 </div>
-{% endblock %}
+
+-->
