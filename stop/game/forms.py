@@ -10,7 +10,7 @@ class SettingsForm(forms.ModelForm):
     # game_id     = forms.IntegerField()
     CHOICES_Players = (('3','3'),('4','4'),('5','5'))
     number_of_players = forms.ChoiceField(choices=CHOICES_Players, label='Number of Players')
-    # list_letters = string.ascii_uppercase
+    game_time_in_s = forms.IntegerField(label='Gametime in sec.')
     game_letter = forms.CharField(label='Letter')
     CHOICES_People = (('Musician', 'Musician'), ('Band', 'Band'),('Hollywood-Star', 'Hollywood-Star'),('Athlete', 'Athlete'),('Politician', 'Politician'),)
     CHOICES_Geography = (('City', 'City'), ('Country', 'Country'), ('River', 'River'), ('Lake', 'Lake'),('Mountain', 'Mountain'),)
@@ -27,6 +27,7 @@ class SettingsForm(forms.ModelForm):
         model = Settings
         fields = [
             'number_of_players',
+            'game_time_in_s',
             'game_letter',
             'category_1',
             'category_2',

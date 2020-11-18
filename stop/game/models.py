@@ -19,7 +19,7 @@ class Player(models.Model):
 
 class Settings(models.Model):
     number_of_players   = models.BigIntegerField()
-    # game_time_in_s      = models.BigIntegerField()
+    game_time_in_s      = models.BigIntegerField()
     game_letter         = models.CharField(max_length=1)
     game_id             = models.BigIntegerField()
     category_1          = models.CharField(max_length=50)

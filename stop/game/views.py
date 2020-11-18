@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
+from time import sleep
 import json
 import random
 import string
@@ -33,13 +34,18 @@ def game_view(request, game_id, player_name):
         form.fields['answer_4'].initial = S.game_letter
         form.fields['answer_5'].initial = S.game_letter
 
+        game_time = S.game_time_in_s * 1000
+        game_time_s = S.game_time_in_s
         context = {
             "form" : form,
-            "settings" : queryset_category
+            "settings" : queryset_category,
+            "game_time" : game_time,
+            "game_time_s" : game_time_s
          }
         return render(request, "game/game.html", context)
     elif request.method == "POST":
         form = AnswerForm(request.POST or None)
+
         if form.is_valid():
             form.save()
         context = {
@@ -80,6 +86,7 @@ def start_page_view(request):
 def game_create_view(request):
     if request.method == "GET":
         form = SettingsForm()
+        form.fields['game_time_in_s'].initial = 30
         form.fields['game_id'].widget = forms.TextInput(attrs={'readonly': 'readonly'})
         form.fields['game_id'].initial = random.randint(100000, 999999)
         list_letters = string.ascii_uppercase

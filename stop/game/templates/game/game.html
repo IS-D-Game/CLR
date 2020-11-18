@@ -1,3 +1,5 @@
+{% extends './base.html' %}
+
 {# Load the tag library #}
 {% load bootstrap4 %}
 
@@ -8,23 +10,53 @@
 {# Display django.contrib.messages as Bootstrap alerts #}
 {% bootstrap_messages %}
 
+<<<<<<< HEAD
+
+=======
+{% block content %}
+>>>>>>> fa9d94b69ef5b3967d6d4f3037b5ead86a96b8ef
+
 <div class="container h-100">
     <div class="row h-100 justify-content-center align-items-center">
         <div class="col-10 col-md-8 col-lg-6">
             <!-- Form -->
-            <form action='.' class="form" method='POST'>
+
+            <script type="text/javascript">
+            var timeleft = {{ game_time_s }};
+            var downloadTimer = setInterval(function(){
+                if(timeleft <= 0){
+                clearInterval(downloadTimer);
+                }
+                document.getElementById("progressBar").value = {{ game_time_s }} - timeleft;
+                timeleft -= 1;
+            }, 1000);
+            </script>
+            <progress value="0" max="{{ game_time_s }}" id="progressBar"></progress>
+
+            <form action='.' name="Answers" class="form" method='POST'>
                 {% csrf_token %}
                 <div class="container">
                     {% bootstrap_form form %}
                     {% buttons %}
-                    <button class="btn btn-primary" type="submit">STOP!</button>
+                    <button class="btn btn-primary" type="submit">submit</button>
                     {% endbuttons %}
                 </div>
+                <script type="text/javascript">
+                window.onload=function(){
+                    window.setTimeout(document.Answers.submit.bind(document.Answers), {{ game_time }});
+                };
+                </script>
             </form>
+
+<!--            <script language="javascript" type="text/javascript">-->
+<!--                var wait=setTimeout("form.submit();",5000);-->
+<!--            </script>-->
             <!-- Form end -->
         </div>
     </div>
 </div>
+{% endblock %}
+
 
 <!--
 <form>

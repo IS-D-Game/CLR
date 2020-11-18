@@ -1,15 +1,6 @@
-{# Load the tag library #}
-{% load bootstrap4 %}
+{% extends './base.html' %}
 
-{# Load CSS and JavaScript #}
-{% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
-
-{# Display django.contrib.messages as Bootstrap alerts #}
-{% bootstrap_messages %}
-
-
-
+{% block content %}
 <div class="container h-100">
     <div class="row h-100 justify-content-center align-items-center">
         <div class="col-10 col-md-8 col-lg-6">
@@ -22,3 +13,4 @@
         </div>
     </div>
 </div>
+{% endblock %}

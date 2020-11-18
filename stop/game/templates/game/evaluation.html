@@ -1,3 +1,5 @@
+{% extends './base.html' %}
+
 {# Load the tag library #}
 {% load bootstrap4 %}
 
@@ -8,6 +10,7 @@
 {# Display django.contrib.messages as Bootstrap alerts #}
 {% bootstrap_messages %}
 
+{% block content %}
 
 <div class="container h-100">
     <div class="row h-100 justify-content-center align-items-center">
@@ -29,6 +32,9 @@
                         {{ ans.answer_5 }}
                     {% endfor %}
                 {% endfor %}
+
+            <button onClick="window.location.reload();">Refresh Player</button>
+
             <form action="." method='POST'>{% csrf_token %}
                 {{ form.as_p }}
                 <input type='submit' value='Save'/>
@@ -38,6 +44,9 @@
         </div>
     </div>
 </div>
+
+{% endblock %}
+
 
 
 
