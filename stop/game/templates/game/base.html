@@ -16,18 +16,85 @@
     <title>City, Country, River</title>
 
     <style>
-        body{
-    background: grey;
-}
+        body {
+            background: #002147;
+        }
+
+        .footer {
+            height: auto;
+            padding-bottom: 30px;
+            position: relative;
+            height: auto;
+            bottom: 0;
+            width: 100%;
+            border-bottom: 1px solid #CCCCCC;
+            border-top: 2px solid #DDDDDD;
+        }
+
+        .footer h3 {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 27px;
+            padding: 40px 0 0px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .footer h4 {
+            color: white;
+            font-size: 2em;
+            font-weight: 600;
+            line-height: 38px;
+            padding: 40px 0 10px;
+            font-family: cursive;
+            font-weight: lighter;
+        }
+
+        .footer ul {
+            font-size: 13px;
+            list-style-type: none;
+            margin-left: 0;
+            padding-left: 0;
+            margin-top: 0px;
+            color: #7F8C8D;
+            padding: 0 0 8px 0;
+        }
+
+        .footer p {
+            color: white;
+            font-weight: lighter;
+            margin: 0;
+        }
+
+        .supportLi h4 {
+            font-size: 20px;
+            font-weight: lighter;
+            line-height: normal;
+            margin-bottom: 0 !important;
+            padding-bottom: 0;
+        }
+
+        .navbar {
+            navbar-expand-lg;
+            color: #7F8C8D;
+        }
+
+        .navbar a {
+            color: white;
+            font-family: cursive;
+            font-weight: lighter;
+            font-size: 28px;
+        }
+
 
     </style>
-
 
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar">
     <a class="navbar-brand" href="http://127.0.0.1:8000">City, Land & River</a>
 </nav>
 
@@ -35,6 +102,38 @@
     {% block content %}
     {% endblock %}
 </div>
+
+
+<footer>
+    <div class="footer" id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <h4> City, Country & River </h4>
+                </div>
+                <div class="col-lg-3 col-sm-2 col-xs-3">
+                    <h3> Contact </h3>
+                    <ul>
+                        <li><p> University of Liechtenstein </p></li>
+                        <li><p> Information Systems </p></li>
+                        <li><p> Information Systems Development</p></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-sm-2 col-xs-3">
+                    <h3> Developers </h3>
+                    <ul>
+                        <li><p> Dominik Kaiser </p></li>
+                        <li><p> Sascha Linvers </p></li>
+                        <li><p> Natascha Moosmann </p></li>
+                    </ul>
+                </div>
+
+                <!--/.row-->
+            </div>
+            <!--/.container-->
+        </div>
+        <!--/.footer-->
+</footer>
 
 </body>
 
