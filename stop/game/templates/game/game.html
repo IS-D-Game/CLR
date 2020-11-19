@@ -21,7 +21,7 @@
             <div class="d-flex justify-content-center">
                 <h1> Game</h1>
             </div>
-
+<!-- java script timer -->
             <script type="text/javascript">
             var timeleft = {{ game_time_s }};
             var downloadTimer = setInterval(function(){
@@ -32,9 +32,11 @@
                 timeleft -= 1;
             }, 1000);
             </script>
+<!-- progress bar -->
             <div class="d-flex justify-content-center">
             <progress value="0" max="{{ game_time_s }}" id="progressBar"></progress>
                 </div>
+<!-- game form -->
 
             <form action='.' name="Answers" class="form" method='POST'>
                 {% csrf_token %}
@@ -46,122 +48,17 @@
                         {% endbuttons %}
                     </div>
                 </div>
+<!-- java script to autosubmit and redirect after time -->
                 <script type="text/javascript">
                 window.onload=function(){
                     window.setTimeout(document.Answers.submit.bind(document.Answers), {{ game_time }});
                 };
                 </script>
             </form>
-
-<!--            <script language="javascript" type="text/javascript">-->
-<!--                var wait=setTimeout("form.submit();",5000);-->
-<!--            </script>-->
-            <!-- Form end -->
         </div>
     </div>
 </div>
 {% endblock %}
-
-
-<!--
-<form>
-  <input type="text" value="{{player_name}}" deactivate>
-</form>
-
-<form action='.' method='POST'>{% csrf_token %}
-
-    {% for field in form.player_name %}
-        {{ field.player_name }}
-        <input type="text" value="{{player_name}}" deactivate>
-    {% endfor %}
-
-    <input type='submit' value='Save' />
-
-</form>
--->
-
-<!--
-<form action='.' method='POST'>{% csrf_token %}
-    <div class="fieldWrapper">
-    {% for field in form.player_name %}
-        {{ field.player_name }}
-        <input type="text" value="{{player_name}}" deactivate>
-    {% endfor %}
-        {% for field in form.game_id %}
-        {{ field.game_id }}
-        <input type="text" value="{{game_id}}" deactivate>
-        {% endfor %}
-
-        <label> Answer 1 </label><br>
-        {{ form.answer_1 }}
-        <label> Answer 2 </label><br>
-        {{ form.answer_2 }}
-        <label> Answer 3 </label><br>
-        {{ form.answer_3 }}
-        <label> Answer 4 </label><br>
-        {{ form.answer_4 }}
-        <label> Answer 5 </label><br>
-        {{ form.answer_5 }}
-    </div>
-    <button type="submit">End Game</button>
-</form>
--->
-
-
-<!--### render form manual-->
-<!--<form action='.' method='POST'>{% csrf_token %}-->
-<!--    {% for field in form.game_id %}-->
-<!--    {% endfor %}-->
-<!--    <input type="text">-->
-<!--    <br/>-->
-
-<!--    {% for field in form.player_name %}-->
-<!--    {% endfor %}-->
-<!--    <input type="text">-->
-<!--    <br/>-->
-
-<!--    {% for field in form.answer_1 %}-->
-<!--        {% for set in settings %}-->
-<!--        {{ set.category_1 }} =-->
-<!--        <input type="text">-->
-<!--        {% endfor %}-->
-<!--    {% endfor %}-->
-<!--    <br/>-->
-
-<!--    {% for field in form.answer_2 %}-->
-<!--        {% for set in settings %}-->
-<!--        {{ set.category_2 }} =-->
-<!--        <input type="text">-->
-<!--        {% endfor %}-->
-<!--    {% endfor %}-->
-<!--    <br/>-->
-
-<!--    {% for field in form.answer_3 %}-->
-<!--        {% for set in settings %}-->
-<!--        {{ set.category_3 }} =-->
-<!--        <input type="text">-->
-<!--        {% endfor %}-->
-<!--    {% endfor %}-->
-<!--    <br/>-->
-
-<!--    {% for field in form.answer_4 %}-->
-<!--        {% for set in settings %}-->
-<!--        {{ set.category_4 }} =-->
-<!--        <input type="text">-->
-<!--        {% endfor %}-->
-<!--    {% endfor %}-->
-<!--    <br/>-->
-
-<!--    {% for field in form.answer_5 %}-->
-<!--        {% for set in settings %}-->
-<!--        {{ set.category_5 }} =-->
-<!--        <input type="text">-->
-<!--        {% endfor %}-->
-<!--    {% endfor %}-->
-<!--    <br/>-->
-
-<!--    <input type='submit' value='Save' />-->
-<!--</form>-->
 
 
 

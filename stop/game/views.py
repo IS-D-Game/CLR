@@ -1,7 +1,6 @@
+#takes a Web request and returns a Web response.
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
-from time import sleep
-import json
 import random
 import string
 from .forms import SettingsForm
@@ -14,7 +13,9 @@ from .models import Settings
 from .models import Evaluation
 from django import forms
 
-
+# get will be used to fetch the page with its data, you can also pass information with get.
+# post to add the data to the database.
+# instance is used to fill the hidden obj by default
 # Create your views here.
 def game_view(request, game_id, player_name):
     if request.method == "GET":
@@ -34,8 +35,8 @@ def game_view(request, game_id, player_name):
         form.fields['answer_4'].initial = S.game_letter
         form.fields['answer_5'].initial = S.game_letter
 
-        game_time = S.game_time_in_s * 1000
-        game_time_s = S.game_time_in_s
+        game_time = S.game_time_in_s * 1000 # game time used for safe form and redirect after defined time
+        game_time_s = S.game_time_in_s # game time used for timer and progress bar
         context = {
             "form" : form,
             "settings" : queryset_category,
@@ -70,11 +71,7 @@ def player_create_view(request):
         }
 
         return redirect('/game/'+form.data['player_name']+'/'+form.data['game_id'], context)
-        # else:
-        #     context = {
-        #         'error': "Error occures"
-        #     }
-        #     return render(request, "game/player_create.html", context)
+
 
 
 
@@ -117,7 +114,7 @@ def evaluation_view(request, game_id, player_name):
         queryset_player = Answer.objects.filter(game_id=obj.game_id).values_list('player_name', flat=True)
 
         form = EvaluationForm(request.POST or None, instance=obj)
-        form.fields['evaluation_player_1'].label = str(list(queryset_player[:1]))[2:-2]
+        form.fields['evaluation_player_1'].label = str(list(queryset_player[:1]))[2:-2] # slice string
         form.fields['evaluation_player_2'].label = str(list(queryset_player[1:2]))[2:-2]
         form.fields['evaluation_player_3'].label = str(list(queryset_player[2:3]))[2:-2]
         form.fields['evaluation_player_4'].label = str(list(queryset_player[3:4]))[2:-2]

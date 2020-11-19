@@ -8,9 +8,6 @@
 
 {% block content %}
 
-{% if error %}
-<div>{{error.message}}</div>
-{% endif %}
 
 <div class="container h-100">
     <div class="row h-100 justify-content-center align-items-center">
@@ -37,43 +34,3 @@
 
 
 {% endblock %}
-
-<form action="{% url 'game:player-create' %}" method='POST' class="form">
-    {% csrf_token %}
-    {{ form.as_p }}
-    {% bootstrap_form form %}
-    <input type='submit' value='Save'/>
-    {% buttons %}
-        <button type="submit" class="btn btn-primary">Submit</button>
-    {% endbuttons %}
--->
-
-<!--
-<input id="id_start_date" type="something">
-var a = document.getElementsById("id_start_date").val;
-var a = $("#id_start_date").val();
--->
-<!--
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript">
-
-$(document).ready(function(){
-
-    $('#button').click(function(e) {
-        var player_name = $("#player_name").val();
-        var game_id = $("#game_id").val();
-        window.location.replace(" http://127.0.0.1:8000/game/"+player_name+ "/" +game_id);
-
-    });
-});
-</script>
-</head>
-<body>
-
-       <input type="text" value="Name" id="player_name">
-       <input type="number" value="Game ID" id="game_id">
-       <button type="button" id="button">Click Me!</button>
-</body>
-</html>
--->
-

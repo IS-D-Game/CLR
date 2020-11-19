@@ -1,13 +1,13 @@
+# we build forms to accept input from site visitors, and then process and respond to the input.
+
 from django import forms
-import random
-import string
+
 from .models import Answer
 from .models import Player
 from .models import Settings
 from .models import Evaluation
 
 class SettingsForm(forms.ModelForm):
-    # game_id     = forms.IntegerField()
     CHOICES_Players = (('3','3'),('4','4'),('5','5'))
     number_of_players = forms.ChoiceField(choices=CHOICES_Players, label='Number of Players')
     game_time_in_s = forms.IntegerField(label='Gametime in sec.')
@@ -39,6 +39,7 @@ class SettingsForm(forms.ModelForm):
 
 
 class AnswerForm(forms.ModelForm):
+    # hide player name and game-id
     player_name = forms.CharField(widget=forms.HiddenInput())
     game_id     = forms.IntegerField(widget=forms.HiddenInput())
     answer_1    = forms.CharField()
@@ -62,7 +63,7 @@ class AnswerForm(forms.ModelForm):
 class PlayerForm(forms.ModelForm):
     player_name = forms.CharField(label='Name',
                     widget=forms.TextInput(attrs={"placeholder": "Your Name"}))
-    game_id = forms.IntegerField()
+    game_id = forms.IntegerField(label='Game-ID')
 
     class Meta:
         model = Player
@@ -73,6 +74,7 @@ class PlayerForm(forms.ModelForm):
 
 
 class EvaluationForm(forms.ModelForm):
+    #hide game-id and player name,
     game_id     = forms.IntegerField(widget=forms.HiddenInput())
     player_name = forms.CharField(widget=forms.HiddenInput())
     CHOICES = (('0', '0 Right'), ('1', '1 Right'), ('2', '2 Right'),('3', '3 Right'),('4', '4 Right'),('5', '5 Right'),)
