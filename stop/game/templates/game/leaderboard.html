@@ -15,51 +15,85 @@
 <div class="container h-100">
     <div class="row h-100 justify-content-center align-items-center">
         <div class="col-10 col-md-8 col-lg-6">
-            <!-- Form -->
-            <h1>Leaderboard</h1>
 
-            {% for query in queryset_player_name %}
-            {% if forloop.counter == 1 %}
-            {{ query.player_name }}
-            {% endif %}
-            {% endfor %}
-            {{ e1 }}
-            <br/>
-            {% for query in queryset_player_name %}
-            {% if forloop.counter == 2 %}
-            {{ query.player_name }}
-            {% endif %}
-            {% endfor %}
-            {{ e2 }}
-            <br/>
-            {% for query in queryset_player_name %}
-            {% if forloop.counter == 3 %}
-            {{ query.player_name }}
-            {% endif %}
-            {% endfor %}
-            {{ e3 }}
-            <br/>
-            {% for query in queryset_player_name %}
-            {% if forloop.counter == 4 %}
-            {{ query.player_name }}
-            {% endif %}
-            {% endfor %}
-            {{ e4 }}
-            <br/>
-            {% for query in queryset_player_name %}
-            {% if forloop.counter == 5 %}
-            {{ query.player_name }}
-            {% endif %}
-            {% endfor %}
-            {{ e5 }}
-            {% endblock %}
+            <div class="d-flex justify-content-center">
+                <h1> Leaderboard</h1>
+            </div>
+                <div class="card text-white bg-dark mb-3">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-center">
+                            <div class="row">
+                                <div class="col">
+                                    {% for query in queryset_player_name %}
+                                    {% if forloop.counter == 1 %}
+                                <b style="font-size:30px"> {{ query.player_name }} </b>
+                                    {% endif %}
+                                    {% endfor %}
+                                    <div class="d-flex justify-content-center">
+                                        <p style="font-size:30px"> {{ e1 }} </p>
+                                    </div>
+                                </div>
 
-            <br>
+                                <div class="col">
+                                    {% for query in queryset_player_name %}
+                                    {% if forloop.counter == 2 %}
+                                <b style="font-size:30px"> {{ query.player_name }} </b>
+                                    {% endif %}
+                                    {% endfor %}
+                                    <div class="d-flex justify-content-center">
+                                        <p style="font-size:30px"> {{ e2 }} </p>
+                                    </div>
+                                </div>
 
-            <button onClick="window.location.reload();">Refresh Leaderboard</button>
+                                <div class="col">
+                                    {% for query in queryset_player_name %}
+                                    {% if forloop.counter == 3 %}
+                                <b style="font-size:30px"> {{ query.player_name }} </b>
+                                    {% endif %}
+                                    {% endfor %}
+                                    <div class="d-flex justify-content-center">
+                                        <p style="font-size:30px"> {{ e3 }} </p>
+                                    </div>
+                                </div>
 
-            <!-- Form end -->
+                                <div class="col">
+                                    {% for query in queryset_player_name %}
+                                    {% if forloop.counter == 4 %}
+                                <b style="font-size:30px"> {{ query.player_name }} </b>
+                                    {% endif %}
+                                    {% endfor %}
+                                    <div class="d-flex justify-content-center">
+                                        <p style="font-size:30px"> {{ e4 }} </p>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    {% for query in queryset_player_name %}
+                                    {% if forloop.counter == 5 %}
+                                <b style="font-size:30px"> {{ query.player_name }} </b>
+                                    {% endif %}
+                                    {% endfor %}
+                                    <div class="d-flex justify-content-center">
+                                        <p style="font-size:30px"> {{ e5 }} </p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                            <div class="d-flex justify-content-center">
+                            {% buttons %}
+                                    <button class="btn btn-primary" onClick="window.location.reload();">Refresh Leaderboard</button>
+                            {% endbuttons %}
+                            </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <a href="/" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">New Game</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
+{% endblock %}

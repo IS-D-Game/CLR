@@ -15,32 +15,63 @@
 <div class="container h-100">
     <div class="row h-100 justify-content-center align-items-center">
         <div class="col-10 col-md-8 col-lg-6">
-            <!-- Form -->
-            <h1> Answer Evaluation</h1>
-                {% for cat in category_list %}
-                    {% for ans in answer_list %}
-                        <h2>{{ ans.player_name }}</h2><br/>
-                        {{ cat.category_1 }} =
-                        {{ ans.answer_1 }}<br/>
-                        {{ cat.category_2 }} =
-                        {{ ans.answer_2 }}<br/>
-                        {{ cat.category_3 }} =
-                        {{ ans.answer_3 }}<br/>
-                        {{ cat.category_4 }} =
-                        {{ ans.answer_4 }}<br/>
-                        {{ cat.category_5 }} =
-                        {{ ans.answer_5 }}
-                    {% endfor %}
-                {% endfor %}
 
-            <button onClick="window.location.reload();">Refresh Player</button>
+            <div class="d-flex justify-content-center">
+                <h1> Answer Evaluation</h1>
+            </div>
 
-            <form action="." method='POST'>{% csrf_token %}
-                {{ form.as_p }}
-                <input type='submit' value='Save'/>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="card text-white bg-dark mb-3">
+                            <div class="card-body">
+                            {% for cat in category_list %}
+                                {% for ans in answer_list %}
+                                    <b style="font-size:30px"> {{ ans.player_name }}</b><br/>
+                                    {{ cat.category_1 }} =
+                                    {{ ans.answer_1 }}<br/>
+                                    {{ cat.category_2 }} =
+                                    {{ ans.answer_2 }}<br/>
+                                    {{ cat.category_3 }} =
+                                    {{ ans.answer_3 }}<br/>
+                                    {{ cat.category_4 }} =
+                                    {{ ans.answer_4 }}<br/>
+                                    {{ cat.category_5 }} =
+                                    {{ ans.answer_5 }}<br/>
+                                {% endfor %}
+                            {% endfor %}
+                            </div>
+                            <button class="btn btn-primary" onClick="window.location.reload();">Refresh Player</button>
+                        </div>
+                        </div>
+                    <div class="col-sm offset-2">
+                          <div class="row align-items-center">
 
-            </form>
-            <!-- Form end -->
+<!--                            <div class="row">-->
+<!--                                    <div class="col-xs-12" style="height:300px;"></div>-->
+<!--                            </div>-->
+                            <div class="row">
+                                <div class="card text-white bg-dark mb-3">
+                                    <div class="card-body">
+
+                                        <form action="." method='POST'>
+                                        {% csrf_token %}
+                                        {% bootstrap_form form %}
+                                        {% buttons %}
+                                        <button class="btn btn-primary" type="submit" >Start</button>
+                                        {% endbuttons %}
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+
+
+
+
+                        </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

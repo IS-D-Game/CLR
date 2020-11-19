@@ -29,15 +29,19 @@
                 timeleft -= 1;
             }, 1000);
             </script>
+            <div class="d-flex justify-content-center">
             <progress value="0" max="{{ game_time_s }}" id="progressBar"></progress>
+                </div>
 
             <form action='.' name="Answers" class="form" method='POST'>
                 {% csrf_token %}
                 <div class="container">
                     {% bootstrap_form form %}
-                    {% buttons %}
-                    <button class="btn btn-primary" type="submit">submit</button>
-                    {% endbuttons %}
+                    <div class="d-flex justify-content-center">
+                        {% buttons %}
+                        <button class="btn btn-primary" type="submit">submit</button>
+                        {% endbuttons %}
+                    </div>
                 </div>
                 <script type="text/javascript">
                 window.onload=function(){

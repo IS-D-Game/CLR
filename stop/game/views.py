@@ -114,7 +114,14 @@ def evaluation_view(request, game_id, player_name):
                                                                  'category_5'))
         queryset = (Answer.objects.filter(game_id=obj.game_id).values('player_name', 'answer_1', 'answer_2', 'answer_3',
                                                           'answer_4', 'answer_5'))
+        queryset_player = Answer.objects.filter(game_id=obj.game_id).values_list('player_name', flat=True)
+
         form = EvaluationForm(request.POST or None, instance=obj)
+        form.fields['evaluation_player_1'].label = str(list(queryset_player[:1]))[2:-2]
+        form.fields['evaluation_player_2'].label = str(list(queryset_player[1:2]))[2:-2]
+        form.fields['evaluation_player_3'].label = str(list(queryset_player[2:3]))[2:-2]
+        form.fields['evaluation_player_4'].label = str(list(queryset_player[3:4]))[2:-2]
+        form.fields['evaluation_player_5'].label = str(list(queryset_player[4:5]))[2:-2]
 
         S = Settings.objects.get(game_id=obj.game_id)
         if S.number_of_players == 3:
