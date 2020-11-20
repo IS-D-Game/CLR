@@ -3,49 +3,48 @@
 
 {% block content %}
 
-<div class="jumbotron">
-    <h1 class="display-4">Welcome to our City, Land & River Game</h1>
-    <p class="lead">This game was created by 3 motivated but extremely overstrained information systems students.</p>
-    <hr class="my-4">
-    <p>Select below if you want to create a new game or join an already created game.</p>
-    <div aria-label="Basic example" class="btn-group" role="group">
-        <a class="btn btn-primary" href="/settings/" role="button">CREATE A NEW GAME</a>
-        <a class="btn btn-primary" href="/player/" role="button">ENTER A GAME LOBBY</a>
-    </div>
-</div>
-
-
 <div class="startpage">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h1> City, Country & River </h1>
+                <h1> Welcome to our City, Land & River Game </h1>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-6 col-sm-6 col-xs-6">
-                <h3> Contact </h3>
-                <ul>
-                    <li><p> University of Liechtenstein </p></li>
-                    <li><p> Information Systems </p></li>
-                    <li><p> Information Systems Development</p></li>
-                </ul>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h4> This game was created by three motivated but extremely overstrained information systems students.
+                    <br>Select below if you want to create a new game or join an already created game.</h4>
+                <br>
             </div>
-            <div class="col-lg-6 col-sm-6 col-xs-6">
-                <h3> Developers </h3>
-                <ul>
-                    <li><p> Dominik Kaiser </p></li>
-                    <li><p> Sascha Linvers </p></li>
-                    <li><p> Natascha Moosmann </p></li>
-                </ul>
-            </div>
-
-            <!--/.row-->
         </div>
-        <!--/.container-->
     </div>
-    <!--/.footer-->
+</div>
 
 
-    {% endblock %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">CREATE A NEW GAME</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a class="btn btn-primary" href="/settings/" role="button">CREATE A NEW GAME</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Enter an existing Game Lobby</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a class="btn btn-primary" href="/player/" role="button">ENTER A GAME LOBBY</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+{% endblock %}
 
