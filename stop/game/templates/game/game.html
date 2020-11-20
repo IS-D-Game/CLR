@@ -8,15 +8,22 @@
 
 {% block content %}
 
+<div class="container-fluid Game">
+    <div class="row justify-content-center">
+        <div class=" col-lg-5 ">
+            <h1>Game</h1>
+            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. a interdum magna ornare eu. Aliquam faucibus
+                lectus in justo mattis consectetur. Curabitur eu lacus id risus placerat scelerisque vel rutrum nulla.
+            </p>
+        </div>
+    </div>
+</div>
 
 
-<div class="container h-100">
-    <div class="row h-100 justify-content-center align-items-center">
-        <div class="col-10 col-md-8 col-lg-6">
-            <!-- Form -->
-            <div class="d-flex justify-content-center">
-                <h1> Game</h1>
-            </div>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="form-group col-lg-5">
+
 <!-- java script timer -->
             <script type="text/javascript">
             var timeleft = {{ game_time_s }};
@@ -28,22 +35,23 @@
                 timeleft -= 1;
             }, 1000);
             </script>
+
 <!-- progress bar -->
             <div class="d-flex justify-content-center">
-            <progress value="0" max="{{ game_time_s }}" id="progressBar"></progress>
-                </div>
-<!-- game form -->
+                <progress value="0" max="{{ game_time_s }}" id="progressBar"></progress>
+            </div>
 
+
+<!-- game form -->
             <form action='.' name="Answers" class="form" method='POST'>
                 {% csrf_token %}
                 <div class="container">
                     {% bootstrap_form form %}
-                    <div class="d-flex justify-content-center">
                         {% buttons %}
-                        <button class="btn btn-primary" type="submit">submit</button>
+                        <button class="btn btn-light btn-lg btn-block" type="submit">Submit</button>
                         {% endbuttons %}
-                    </div>
                 </div>
+
 <!-- java script to autosubmit and redirect after time -->
                 <script type="text/javascript">
                 window.onload=function(){

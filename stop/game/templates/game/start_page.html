@@ -3,48 +3,41 @@
 
 {% block content %}
 
-<div class="startpage">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h1> Welcome to our City, Land & River Game </h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h4> This game was created by three motivated but extremely overstrained information systems students.
-                    <br>Select below if you want to create a new game or join an already created game.</h4>
-                <br>
-            </div>
-        </div>
-    </div>
-</div>
 
-
-<div class="container">
+<div class="container Title">
     <div class="row">
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">CREATE A NEW GAME</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a class="btn btn-primary" href="/settings/" role="button">CREATE A NEW GAME</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Enter an existing Game Lobby</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a class="btn btn-primary" href="/player/" role="button">ENTER A GAME LOBBY</a>
-                </div>
-            </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h1> Welcome to our City, Land & River Game </h1>
         </div>
     </div>
 </div>
 
+
+<div class="container Startpagetext">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h4> This Webapplication was created by three motivated but extremely overstrained information systems students. Select below if you want to create a new game or join an already created game.</h4>
+            <br>
+        </div>
+    </div>
 </div>
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+         <div class="card startpage-card col-lg-5 col-md-5 col-sm-6 col-xs-6">
+            <h4 class="card-title">CREATE A NEW GAME</h4>
+            <p class="card-text">Press the button below to create a new game and set the settings yourself.</p>
+            <a class="btn btn-light btn-lg btn-block" href="/settings/" role="button">NEW GAME</a>
+         </div>
+
+        <div class="card startpage-card col-lg-5 col-md-5 col-sm-6 col-xs-6">
+            <h4 class="card-title">JOIN A GAME LOBBY</h4>
+            <p class="card-text">Did you get a game ID from a friend? Then press the button below to join the same lobby.</p>
+            <a class="btn btn-light btn-lg btn-block" href="/player/" role="button">GAME LOBBY</a>
+        </div>
+    </div>
+</div>
+
 
 {% endblock %}
 
