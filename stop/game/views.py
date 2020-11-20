@@ -35,7 +35,8 @@ def game_view(request, game_id, player_name):
         form.fields['answer_4'].initial = S.game_letter
         form.fields['answer_5'].initial = S.game_letter
 
-        game_time = S.game_time_in_s * 1000 # game time used for safe form and redirect after defined time
+        game_time = S.game_time_in_s * 1000 + 1000# game time used for safe form and redirect after defined time
+        #*1000 to make miliseconds +1000 to add a second that the bar is full loaded before redirect
         game_time_s = S.game_time_in_s # game time used for timer and progress bar
         context = {
             "form" : form,
