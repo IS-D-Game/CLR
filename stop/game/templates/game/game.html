@@ -25,6 +25,7 @@
         <div class="form-group col-lg-5">
 
 <!-- java script timer -->
+
             <script type="text/javascript">
             var timeleft = {{ game_time_s }};
             var downloadTimer = setInterval(function(){
@@ -36,8 +37,22 @@
             }, 1000);
             </script>
 
+
 <!-- progress bar -->
-            <div class="d-flex justify-content-center">
+
+            <style>
+                #progressBar {
+                  width: 100%;
+                  height: 20px;
+                  background-color: ddd;
+                  text-align: center;
+                  line-height: 30px;
+                  color: white;
+                }
+
+            </style>
+
+            <div class="d-flex justify-content-center<style>">
                 <progress value="0" max="{{ game_time_s }}" id="progressBar"></progress>
             </div>
 
