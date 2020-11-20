@@ -73,7 +73,24 @@ def player_create_view(request):
 
         return redirect('/game/'+form.data['player_name']+'/'+form.data['game_id'], context)
 
+def player_create_view_2(request, game_id):
+    if request.method == "GET":
+        obj = Settings.objects.get(game_id = game_id)
+        form = PlayerForm(request.POST or None, instance = obj)
+        form.fields["game_id"].widget = forms.TextInput(attrs = {"readonly": "readonly"})
+        context = {
+            'form': form
+        }
+        return render(request, "game/player_create.html", context)
+    elif request.method == "POST":
+        form = PlayerForm(request.POST or None)
+        form.save()
+        # if form.is_valid():
+        context = {
+            'form': form,
+        }
 
+        return redirect('/game/'+form.data['player_name']+'/'+form.data['game_id'], context)
 
 
 
@@ -101,7 +118,7 @@ def game_create_view(request):
         context = {
             'form': form,
          }
-        return redirect('/player/', context)
+        return redirect('/player/'+form.data["game_id"], context)
 
 
 
