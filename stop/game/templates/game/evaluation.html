@@ -12,70 +12,73 @@
 
 {% block content %}
 
+
 <div class="container h-100">
     <div class="row h-100 justify-content-center align-items-center">
-        <div class="col-10 col-md-8 col-lg-6">
-
-            <div class="d-flex justify-content-center">
-                <h1> Answer Evaluation</h1>
-            </div>
-
             <div class="container">
-                <div class="row">
-                    <div class="col-sm">
-                        <div class="card text-white bg-dark mb-3">
-                            <div class="card-body">
+<!--Header                -->
+                    <div class="d-flex justify-content-center">
+                        <div class="row">
+                            <h1> Answer Evaluation</h1>
+                        </div>
+                    </div>
+<!--Answers                -->
+                    <div class="d-flex justify-content-center">
+                        <div class="row  mt-3">
                             {% for cat in category_list %}
-                                {% for ans in answer_list %}
-                                    <b style="font-size:30px"> {{ ans.player_name }}</b><br/>
-                                    {{ cat.category_1 }} =
-                                    {{ ans.answer_1 }}<br/>
-                                    {{ cat.category_2 }} =
-                                    {{ ans.answer_2 }}<br/>
-                                    {{ cat.category_3 }} =
-                                    {{ ans.answer_3 }}<br/>
-                                    {{ cat.category_4 }} =
-                                    {{ ans.answer_4 }}<br/>
-                                    {{ cat.category_5 }} =
-                                    {{ ans.answer_5 }}<br/>
+                                {% for ans in answer_list %}<br/>
+                                <div class="card text-white bg-dark mb-3" style="width: 14rem;">
+                                    <div class="card-body">
+                                        <b style="font-size:30px"> {{ ans.player_name }}</b><br/>
+                                        {{ cat.category_1 }} =
+                                        {{ ans.answer_1 }}<br/>
+                                        {{ cat.category_2 }} =
+                                        {{ ans.answer_2 }}<br/>
+                                        {{ cat.category_3 }} =
+                                        {{ ans.answer_3 }}<br/>
+                                        {{ cat.category_4 }} =
+                                        {{ ans.answer_4 }}<br/>
+                                        {{ cat.category_5 }} =
+                                        {{ ans.answer_5 }}<br/>
+                                    </div>
+                                </div>
                                 {% endfor %}
                             {% endfor %}
+                        </div>
+                    </div>
+<!--Refresh Button               -->
+                    <div class="d-flex justify-content-center">
+                        <div class="row mt-3">
+                                <button class="btn btn-primary" onClick="window.location.reload();">Refresh Player</button>
                             </div>
-                            <button class="btn btn-primary" onClick="window.location.reload();">Refresh Player</button>
-                        </div>
-                        </div>
-                    <div class="col-sm offset-2">
-                          <div class="row align-items-center">
+                    </div>
+<!--Form                -->
+                    <div class="d-flex justify-content-center">
+                            <form action="." method='POST'>
+                                <fieldset class="form-group align-items-between">
 
-<!--                            <div class="row">-->
-<!--                                    <div class="col-xs-12" style="height:300px;"></div>-->
-<!--                            </div>-->
-                            <div class="row">
-                                <div class="card text-white bg-dark mb-3">
-                                    <div class="card-body">
-
-                                        <form action="." method='POST'>
+                                    <div class="row mt-3">
                                         {% csrf_token %}
                                         {% bootstrap_form form %}
-                                            <div class="d-flex justify-content-center">
+
+
+                                    </div>
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <div class="row mt-3">
+                                        <div class="col text-center">
                                                 {% buttons %}
                                                 <button class="btn btn-primary" type="submit" >Start</button>
                                                 {% endbuttons %}
-                                            </div>
-                                        </form>
+                                        </div>
+
                                     </div>
-                                </div>
-                            </div>
-                          </div>
-
-
-
-
-                        </div>
-                </div>
+                                </fieldset>
+                            </form>
+                    </div>
             </div>
         </div>
-    </div>
+
 </div>
 
 {% endblock %}
