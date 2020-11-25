@@ -9,19 +9,19 @@ from .models import Evaluation
 
 class SettingsForm(forms.ModelForm):
     CHOICES_Players = (('3','3'),('4','4'),('5','5'))
-    number_of_players = forms.ChoiceField(choices=CHOICES_Players, label='Number of Players')
-    game_time_in_s = forms.IntegerField(label='Gametime in sec.')
-    game_letter = forms.CharField(label='Letter')
+    number_of_players = forms.ChoiceField(choices=CHOICES_Players, label='Select the number of players')
+    game_time_in_s = forms.IntegerField(label='Enter the preferred game time in seconds')
+    game_letter = forms.CharField(label='Enter the preferred game letter')
     CHOICES_People = (('Musician', 'Musician'), ('Band', 'Band'),('Hollywood-Star', 'Hollywood-Star'),('Athlete', 'Athlete'),('Politician', 'Politician'),)
     CHOICES_Geography = (('City', 'City'), ('Country', 'Country'), ('River', 'River'), ('Lake', 'Lake'),('Mountain', 'Mountain'),)
     CHOICES_Food = (('Meal', 'Meal'), ('Liquor', 'Liquor'), ('Candy', 'Candy'), ('Fruit', 'Fruit'), ('Vegetables', 'Vegetables'),)
     CHOICES_Nature = (('Animal', 'Animal'), ('Dog-Breed', 'Dog-Breed'), ('Fish', 'Fish'), ('Bird', 'Bird'), ('Plant', 'Plant'),)
     CHOICES_Others = (('Movie', 'Movie'), ('Series', 'Series'), ('Cosmetic-Brand', 'Cosmetic-Brand'), ('Car-Brand', 'Car-Brand'), ('Clothing-Brand', 'Clothing-Brand'),)
-    category_1          = forms.ChoiceField(choices=CHOICES_People, label="People")
-    category_2          = forms.ChoiceField(choices=CHOICES_Geography, label="Geography")
-    category_3          = forms.ChoiceField(choices=CHOICES_Food, label="Food")
-    category_4          = forms.ChoiceField(choices=CHOICES_Nature, label="Nature")
-    category_5          = forms.ChoiceField(choices=CHOICES_Others, label="Others")
+    category_1          = forms.ChoiceField(choices=CHOICES_People, label="Select the preferred game category on the theme of people")
+    category_2          = forms.ChoiceField(choices=CHOICES_Geography, label="Select the preferred game category on the theme of geography")
+    category_3          = forms.ChoiceField(choices=CHOICES_Food, label="Select the preferred game category on the theme of food")
+    category_4          = forms.ChoiceField(choices=CHOICES_Nature, label="Select the preferred game category on the theme of nature.")
+    category_5          = forms.ChoiceField(choices=CHOICES_Others, label="Select the preferred game category on the mixes theme")
     game_id = forms.CharField(label = "Game ID")
     class Meta:
         model = Settings

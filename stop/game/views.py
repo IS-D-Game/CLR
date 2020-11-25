@@ -196,7 +196,7 @@ def leaderboard_view(request, player_name, game_id):
             e3 = sum(list(map(int, p3[:1])) + list(map(int, p3[1:2])) + list(map(int, p3[2:3])) + list(map(int, p3[3:4])) + list(map(int, p3[4:5])))
             context = {
                 "e1": e1,
-                "e2": e2,
+                "e2": e2 ,
                 "e3": e3,
                 "queryset_player_name": queryset_player_name
             }

@@ -8,13 +8,14 @@
 
 {% block content %}
 
-
 <div class="container-fluid Lobby">
     <div class="row justify-content-center">
         <div class=" col-lg-5 ">
-            <h1>Game Settings</h1>
-            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. a interdum magna ornare eu. Aliquam faucibus
-                lectus in justo mattis consectetur. Curabitur eu lacus id risus placerat scelerisque vel rutrum nulla.
+            <h1>Game Lobby</h1>
+            <p>
+                Enter your own <strong> Name </strong> and the <strong> Game ID </strong> below if it has not
+                already been inserted automatically.
+                <br>And finally press "Save & Enter Game" to start the game.
             </p>
         </div>
     </div>
@@ -25,16 +26,14 @@
     <div class="row justify-content-center">
         <div class="form-group col-lg-5">
             <form action='.' class="form" method='POST'>
-                    {% csrf_token %}
-                    {% bootstrap_form form %}
-                    {% buttons %}
-                    <button class="btn btn-light btn-lg btn-block" type="submit">Save & Enter Game</button>
-                    {% endbuttons %}
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                {% buttons %}
+                <button class="btn btn-light btn-lg btn-block" type="submit">Save & Enter Game</button>
+                {% endbuttons %}
             </form>
         </div>
     </div>
 </div>
-
-
 
 {% endblock %}

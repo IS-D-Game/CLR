@@ -16,38 +16,44 @@
     <title>City, Country & River</title>
 
     <style>
-        /*GENEREL*/
-        body {
+/*GENEREL*/
+        html,body {
             background: #2a475e;
+            height: auto;
+            margin: 0;
+        }
+        .wrapper {
+          min-height: 90%;
+          margin-bottom: -30px;
         }
 
-        .Title{
+        .Title {
             color: #c7d5e0;
             text-align: center;
         }
 
-        .Startpagetext{
+        .Startpagetext {
             color: #c7d5e0;
             font-size: 18px;
             margin-top: 50px;
             text-align: center;
         }
 
-        .Headertext{
+        .Headertext {
             color: #c7d5e0;
             font-size: 20px;
             text-align: center;
         }
 
-        .form{
+        .form {
             color: #c7d5e0;
             font-size: 18px;
             margin-top: 10px;
         }
 
-        /*STARTPAGE*/
 
-        .startpage-card{
+/*STARTPAGE*/
+        .startpage-card {
             background: #1b2838;
             color: #66c0f4;
             margin: 20px;
@@ -56,41 +62,73 @@
             text-align: center;
         }
 
-        /*LOBBY*/
 
-        .Lobby{
+/*LOBBY*/
+        .Lobby {
             color: #c7d5e0;
             text-align: center;
         }
 
-        /*SETTINGS*/
 
-        .Settings{
+/*SETTINGS*/
+        .Settings {
             color: #c7d5e0;
         }
 
         /*GAME*/
-
-        .Game{
+        .Game {
             color: #c7d5e0;
             text-align: center;
         }
 
-        /*EVALUATION*/
 
-        /*LEADERBOARD*/
+/*EVALUATION*/
+        .Evaluation-Answ {
+            background: #1b2838;
+            color: #66c0f4;
+            margin: 5px;
+            padding: 5px;
+            width: 14rem;
+        }
 
-        /*FOOTER*/
+        .Evaluation-Answ h4 {
+            color: #c7d5e0;
+        }
+
+        .Evaluation-Form {
+            margin-top: 20px;
+            color: #66c0f4;
+            font-size: 30px;
+        }
+
+        .Evaluation-btn {
+            margin: 5px;
+            padding: 5px;
+        }
+
+
+/*LEADERBOARD*/
+        .leaderboard {
+            background: #1b2838;
+            color: #66c0f4;
+            margin: 20px;
+            margin-top: 10px;
+            padding: 30px;
+            text-align: center;
+        }
+
+
+
+/*FOOTER*/
+        .push {
+            height: 30px;
+            }
 
         .footer {
             height: auto;
-            padding-bottom: 30px;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+            padding-bottom: 20px;
             border-bottom: 1px solid #CCCCCC;
             border-top: 2px solid #DDDDDD;
-            margin-top: 50px;
         }
 
         .footer h3 {
@@ -137,6 +175,8 @@
             padding-bottom: 0;
         }
 
+
+/*Navbar*/
         .navbar {
             navbar-expand-lg;
             color: #7F8C8D;
@@ -147,10 +187,9 @@
             font-family: cursive;
             font-weight: lighter;
             font-size: 28px;
-            margin-bottom: 50px;
+            margin-bottom: 20px;
             padding: 20px;
         }
-
     </style>
 
 </head>
@@ -164,6 +203,7 @@
 <div class="wrapper">
     {% block content %}
     {% endblock %}
+    <div class="push"></div>
 </div>
 
 
