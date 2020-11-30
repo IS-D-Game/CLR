@@ -247,3 +247,10 @@ def leaderboard_view(request, player_name, game_id):
             }
 
     return render(request, "game/leaderboard.html",context)
+
+
+
+def handler404(request, *args, **argv):
+    return render(request, 'game/error.html', status=404)
+def handler500(request, *args, **argv):
+    return render(request, 'game/error.html', status=500)

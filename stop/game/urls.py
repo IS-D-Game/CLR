@@ -10,6 +10,7 @@ from .views import (
 )
 
 app_name = 'game'
+
 urlpatterns = [
     path('', start_page_view, name='start-page'),
     path('settings/', game_create_view, name='game-create'),
