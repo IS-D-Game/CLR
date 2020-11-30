@@ -38,6 +38,18 @@ class SettingsForm(forms.ModelForm):
         ]
 
 
+class PlayerForm(forms.ModelForm):
+    player_name = forms.CharField(label='Name',
+                    widget=forms.TextInput(attrs={"placeholder": "Your Name"}))
+    game_id = forms.IntegerField(label='Game-ID')
+
+    class Meta:
+        model = Player
+        fields = [
+            'player_name',
+            'game_id',
+        ]
+
 class AnswerForm(forms.ModelForm):
     # hide player name and game-id
     player_name = forms.CharField(widget=forms.HiddenInput())
@@ -58,20 +70,6 @@ class AnswerForm(forms.ModelForm):
             'answer_4',
             'answer_5',
         ]
-
-
-class PlayerForm(forms.ModelForm):
-    player_name = forms.CharField(label='Name',
-                    widget=forms.TextInput(attrs={"placeholder": "Your Name"}))
-    game_id = forms.IntegerField(label='Game-ID')
-
-    class Meta:
-        model = Player
-        fields = [
-            'player_name',
-            'game_id',
-        ]
-
 
 class EvaluationForm(forms.ModelForm):
     #hide game-id and player name,

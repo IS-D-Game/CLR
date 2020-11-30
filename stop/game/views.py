@@ -17,6 +17,71 @@ from django import forms
 # post to add the data to the database.
 # instance is used to fill the hidden obj by default
 # Create your views here.
+
+def start_page_view(request):
+    return render(request, "game/start_page.html")
+
+
+def game_create_view(request):
+    if request.method == "GET":
+        form = SettingsForm()
+        form.fields['game_time_in_s'].initial = 30
+        form.fields['game_id'].widget = forms.TextInput(attrs={'readonly': 'readonly'})
+        form.fields['game_id'].initial = random.randint(100000, 999999)
+        list_letters = string.ascii_uppercase
+        form.fields['game_letter'].initial = random.choice(list_letters)
+
+        context = {
+            'form': form
+        }
+        return render(request, "game/game_create.html", context)
+    elif request.method == "POST":
+        form = SettingsForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+        context = {
+            'form': form,
+         }
+        return redirect('/player/'+form.data["game_id"], context)
+
+
+def player_create_view(request):
+    if request.method == "GET":
+        form = PlayerForm()
+        context = {
+            'form': form
+        }
+        return render(request, "game/player_create.html", context)
+    elif request.method == "POST":
+        form = PlayerForm(request.POST or None)
+        form.save()
+        # if form.is_valid():
+        context = {
+            'form': form,
+        }
+
+        return redirect('/game/'+form.data['player_name']+'/'+form.data['game_id'], context)
+
+# View for Player who created the game, so the game_id is auto passed
+def player_create_view_2(request, game_id):
+    if request.method == "GET":
+        obj = Settings.objects.get(game_id = game_id)
+        form = PlayerForm(request.POST or None, instance = obj)
+        form.fields["game_id"].widget = forms.TextInput(attrs = {"readonly": "readonly"})
+        context = {
+            'form': form
+        }
+        return render(request, "game/player_create.html", context)
+    elif request.method == "POST":
+        form = PlayerForm(request.POST or None)
+        form.save()
+        # if form.is_valid():
+        context = {
+            'form': form,
+        }
+
+        return redirect('/game/'+form.data['player_name']+'/'+form.data['game_id'], context)
+
 def game_view(request, game_id, player_name):
     if request.method == "GET":
         obj = Player.objects.get(player_name=player_name, game_id=game_id)
@@ -56,69 +121,7 @@ def game_view(request, game_id, player_name):
         return redirect('/evaluation/'+form.data['player_name']+'/'+form.data['game_id'], context) #zu auswertung
 
 
-def player_create_view(request):
-    if request.method == "GET":
-        form = PlayerForm()
-        context = {
-            'form': form
-        }
-        return render(request, "game/player_create.html", context)
-    elif request.method == "POST":
-        form = PlayerForm(request.POST or None)
-        form.save()
-        # if form.is_valid():
-        context = {
-            'form': form,
-        }
 
-        return redirect('/game/'+form.data['player_name']+'/'+form.data['game_id'], context)
-
-def player_create_view_2(request, game_id):
-    if request.method == "GET":
-        obj = Settings.objects.get(game_id = game_id)
-        form = PlayerForm(request.POST or None, instance = obj)
-        form.fields["game_id"].widget = forms.TextInput(attrs = {"readonly": "readonly"})
-        context = {
-            'form': form
-        }
-        return render(request, "game/player_create.html", context)
-    elif request.method == "POST":
-        form = PlayerForm(request.POST or None)
-        form.save()
-        # if form.is_valid():
-        context = {
-            'form': form,
-        }
-
-        return redirect('/game/'+form.data['player_name']+'/'+form.data['game_id'], context)
-
-
-
-
-def start_page_view(request):
-    return render(request, "game/start_page.html")
-
-def game_create_view(request):
-    if request.method == "GET":
-        form = SettingsForm()
-        form.fields['game_time_in_s'].initial = 30
-        form.fields['game_id'].widget = forms.TextInput(attrs={'readonly': 'readonly'})
-        form.fields['game_id'].initial = random.randint(100000, 999999)
-        list_letters = string.ascii_uppercase
-        form.fields['game_letter'].initial = random.choice(list_letters)
-
-        context = {
-            'form': form
-        }
-        return render(request, "game/game_create.html", context)
-    elif request.method == "POST":
-        form = SettingsForm(request.POST or None)
-        if form.is_valid():
-            form.save()
-        context = {
-            'form': form,
-         }
-        return redirect('/player/'+form.data["game_id"], context)
 
 
 
@@ -249,7 +252,7 @@ def leaderboard_view(request, player_name, game_id):
     return render(request, "game/leaderboard.html",context)
 
 
-
+# Error views
 def handler404(request, *args, **argv):
     return render(request, 'game/error.html', status=404)
 def handler500(request, *args, **argv):
