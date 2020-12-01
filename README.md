@@ -1,17 +1,17 @@
 # Introduction
 
-The goal of this project is to implement a City-River-Country game as a learning experience. 
+The goal of this project is to implement a City-River-Country game as a learning experience for information systems students. 
 
-STOP is written with django 3.1.2 and python 3.
+The game is written with django 3.1.2 and python 3.
 
 
 ### Main features
 
-* ???
+* Game settings and join procedure
 
-* ???
+* Main Game with timed fullfill limit
 
-* ???
+* Players self evaluation and leaderboard
 
 * SQLite by default if no env variable is set
 
@@ -46,8 +46,6 @@ And then:
 
     $ python3 -m django startproject stop
       
-      
-After that just install the local dependencies, run migrations, and start the server.
 
 
 # Getting Started
@@ -60,11 +58,11 @@ First clone the repository from Github and switch to the new directory:
     
 Activate the virtualenv for your project.
 
-For Windows User 
+For Windows User (direction could deviate)
 
     $ venv\Scripts\activate
     
-For OS User
+For OS User (direction could deviate)
 
     $ source bin/activate
     
