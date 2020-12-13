@@ -52,7 +52,8 @@ And then:
 
 First clone the repository from Github and switch to the new directory:
 
-    $ git clone git@github.com/IS-D-Game/CLR.git
+    $ git clone https://github.com/IS-D-Game/CLR.git
+    $ cd {{ CLR }}
     $ cd {{ stop }}
     
     
