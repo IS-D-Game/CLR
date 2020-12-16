@@ -58,7 +58,7 @@
 
 
 <!-- game form -->
-            <form action='.' name="Answers" class="form" method='POST'>
+            <form action='.' autocomplete="off" name="Answers" class="form" method='POST'>
                 {% csrf_token %}
                 <div class="container">
                     {% bootstrap_form form %}
